@@ -15,6 +15,9 @@ classDiagram
 
     %% Abstrato: cada subclasse decide como aplicar (ou nao) desconto sobre o valor bruto.
     +calcularValorAPagar(double valorBruto) double*
+
+    %% Imprime os dados comuns (codigo, nome, email, curso).
+    +toString() String
   }
 
   class AlunoBolsista{
@@ -28,6 +31,9 @@ classDiagram
 
     %% @Override - paga o valor bruto reduzido pelo percentual da bolsa.
     +calcularValorAPagar(double valorBruto) double
+
+    %% @Override - chama super.toString() e acrescenta tipoDeBolsa e percentualBolsa.
+    +toString() String
   }
 
   class AlunoRegular{
@@ -36,6 +42,9 @@ classDiagram
 
     %% @Override - paga o valor bruto cheio, sem desconto.
     +calcularValorAPagar(double valorBruto) double
+
+    %% @Override - chama super.toString() so pra identificar como Regular.
+    +toString() String
   }
     %% AlunoBolsista e AlunoRegular Herdam Aluno.
     Aluno <|-- AlunoBolsista
@@ -54,6 +63,8 @@ classDiagram
     +getNome() String
     +getTitulacao() String
     +getEmail() String
+
+    +toString() String
   }
   
   class Curso {
@@ -63,10 +74,12 @@ classDiagram
 
     +Curso(int codigo, String nome, Double valorPorCredito)
 
-    %% Sem setters 
+    %% Sem setters
     +getCodigo() int
     +getNome() String
     +getValorPorCredito() Double
+
+    +toString() String
   }
 
   class Disciplina {
@@ -78,8 +91,10 @@ classDiagram
 
     +getCodigo() int
     +getNome() String
-    +getQtdCreditos() int 
+    +getQtdCreditos() int
     +getCurso() Curso
+
+    +toString() String
   }
   %% Disciplina é associação de Curso, pois cada uma apenas
   %% guarda uma referencia de outra. Vivem independentes,
@@ -100,6 +115,8 @@ classDiagram
     +getNumeroDeVagas() int
     +getProfessor() Professor
     +getDisciplina() Disciplina
+
+    +toString() String
   }
 
   %% Associação -- Turma (0 ou várias) é conduzida por Professor (exatamente 1).
