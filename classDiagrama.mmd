@@ -1,0 +1,115 @@
+classDiagram
+
+  class Aluno {
+    <<abstract>>
+    -int codigo
+    -String nome
+    -String email
+
+    +Aluno(int codigo, String nome, String email, Curso curso)
+
+    +getCodigo() int
+    +getNome() String
+    +getEmail() String
+    +getCurso() Curso
+
+    %% Abstrato: cada subclasse decide como aplicar (ou nao) desconto sobre o valor bruto.
+    +calcularValorAPagar(double valorBruto) double*
+  }
+
+  class AlunoBolsista{
+    -String tipoDeBolsa
+    -Double percentualBolsa
+
+    +AlunoBolsista(int codigo, String nome, String email, Curso curso, String tipoDeBolsa, Double percentualBolsa)
+
+    +getTipoDeBolsa() String
+    +getPercentualBolsa() Double
+
+    %% @Override - paga o valor bruto reduzido pelo percentual da bolsa.
+    +calcularValorAPagar(double valorBruto) double
+  }
+
+  class AlunoRegular{
+    %%AlunoRegular Precisa de Atributos? Eu acho que não.
+    +AlunoRegular(int codigo, String nome, String email, Curso curso)
+
+    %% @Override - paga o valor bruto cheio, sem desconto.
+    +calcularValorAPagar(double valorBruto) double
+  }
+    %% AlunoBolsista e AlunoRegular Herdam Aluno.
+    Aluno <|-- AlunoBolsista
+    Aluno <|-- AlunoRegular
+
+  
+  class Professor {
+    -int codigo
+    -String nome
+    -String titulacao
+    -String email
+
+    +Professor(int codigo, String nome, String titulacao, String email)
+
+    +getCodigo() int
+    +getNome() String
+    +getTitulacao() String
+    +getEmail() String
+  }
+  
+  class Curso {
+    -int codigo
+    -String nome
+    -Double valorPorCredito
+
+    +Curso(int codigo, String nome, Double valorPorCredito)
+
+    %% Sem setters 
+    +getCodigo() int
+    +getNome() String
+    +getValorPorCredito() Double
+  }
+
+  class Disciplina {
+    -int codigo
+    -String nome
+    -int qtdCreditos
+
+    +Disciplina(int codigo, String nome, int qtdCreditos, Curso curso)
+
+    +getCodigo() int
+    +getNome() String
+    +getQtdCreditos() int 
+    +getCurso() Curso
+  }
+  %% Disciplina é associação de Curso, pois cada uma apenas
+  %% guarda uma referencia de outra. Vivem independentes,
+  %% cada uma com seu ciclo de vida.
+
+  %% Associação -- Disciplina (0 ou várias) pertence a Curso (exatamente 1).
+  Disciplina "0..*" --> "1" Curso : pertence a
+
+  class Turma {
+    -String semestreLetivo
+    -int codigo
+    -int numeroDeVagas
+
+    +Turma(String semestreLetivo, int codigo, int numeroDeVagas, Disciplina disciplina, Professor professor)
+
+    +getSemestreLetivo() String
+    +getCodigo() int
+    +getNumeroDeVagas() int
+    +getProfessor() Professor
+    +getDisciplina() Disciplina
+  }
+
+  %% Associação -- Turma (0 ou várias) é conduzida por Professor (exatamente 1).
+  %% O mesmo professor pode assumir várias turmas.
+  Turma "0..*" --> "1" Professor : é conduzida por
+
+  %% Associação -- Turma (0 ou várias) oferece Disciplina (exatamente 1).
+  %% A mesma disciplina pode ser oferecida em várias turmas.
+  Turma "0..*" --> "1" Disciplina : oferece
+
+  %% Associação -- Aluno (0 ou vários) pertence a Curso (exatamente 1)
+  %% Um curso pode ter vários Alunos. 
+  Aluno "0..*" --> "1" Curso : pertence a
