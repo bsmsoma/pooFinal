@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-public class GerenciadorDeInstituicao {
+public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
 
     private ArrayList<Curso> cursos = new ArrayList<>();
     private ArrayList<Disciplina> disciplinas = new ArrayList<>();
@@ -146,7 +146,40 @@ public class GerenciadorDeInstituicao {
 
             }
 
-            return null;
         }
+        return null;
+    }
+
+    @Override
+    public Matricula buscarMatricula(Aluno aluno, Turma turma) {
+        return null;
+    }
+
+    public String cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) {
+
+        Disciplina disciplina = buscarDisciplina(codigoDisciplina);
+        Professor professor = buscarProfessor(codigoProfessor);
+
+        if (buscarTurma(codigo) == null) {
+
+            if (disciplina != null) {
+
+                if (professor != null) {
+
+                    Turma turma = new Turma(codigo, semestre, disciplina, professor, vagas);
+
+                    turmas.add(turma);
+
+                    return "Turma cadastrada com sucesso!";
+
+                }
+                return "Codigo professor não cadastrado";
+
+            }
+            return "Codigo Disciplina não cadastrado";
+
+        }
+        return "Turma já cadastrada !";
 
     }
+}

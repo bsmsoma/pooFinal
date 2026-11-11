@@ -140,3 +140,57 @@ classDiagram
   %% Associação -- Aluno (0 ou vários) pertence a Curso (exatamente 1)
   %% Um curso pode ter vários Alunos.
   Aluno "0..*" --> "1" Curso : pertence a
+
+
+
+
+
+
+
+
+  %% 11/11/26-03:50
+  %% =========================================
+  %% GERENCIADOR DE INSTITUICAO
+  %% =========================================
+
+  class GerenciadorDeInstituicao {
+    -ArrayList~Curso~ cursos
+    -ArrayList~Disciplina~ disciplinas
+    -ArrayList~Professor~ professores
+    -ArrayList~Aluno~ alunos
+    -ArrayList~Turma~ turmas
+
+    +buscarCurso(int codigo) Curso
+    +cadastrarCurso(int codigo, String nome, double valorPorCredito) String
+
+    +buscarDisciplina(int codigo) Disciplina
+    +cadastrarDisciplina(int codigo, String nome, int qtdCreditos, int codigoCurso) String
+
+    +buscarProfessor(int codigo) Professor
+    +cadastrarProfessor(int codigo, String nome, String titulacao, String email) String
+
+    +buscarAluno(int codigo) Aluno
+    +cadastrarAlunoRegular(int codigo, String nome, String email, int codigoCurso) String
+    +cadastrarAlunoBolsista(int codigo, String nome, String email, int codigoCurso, String tipoDeBolsa, double percentualBolsa) String
+
+    +buscarTurma(int codigo) Turma
+    +cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) String
+
+    +buscarMatricula(Aluno aluno, Turma turma) Matricula
+  }
+
+  %% Associação -- Gerenciador (1) administra Curso (0 ou vários).
+  GerenciadorDeInstituicao "1" --> "0..*" Curso : gerencia
+
+  %% Associação -- Gerenciador (1) administra Disciplina (0 ou várias).
+  GerenciadorDeInstituicao "1" --> "0..*" Disciplina : gerencia
+
+  %% Associação -- Gerenciador (1) administra Professor (0 ou vários).
+  GerenciadorDeInstituicao "1" --> "0..*" Professor : gerencia
+
+  %% Associação -- Gerenciador (1) administra Aluno (0 ou vários).
+  %% AlunoRegular e AlunoBolsista ficam armazenados na mesma lista.
+  GerenciadorDeInstituicao "1" --> "0..*" Aluno : gerencia
+
+  %% Associação -- Gerenciador (1) administra Turma (0 ou várias).
+  GerenciadorDeInstituicao "1" --> "0..*" Turma : gerencia
