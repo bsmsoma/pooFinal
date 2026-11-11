@@ -26,7 +26,6 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -49,21 +48,18 @@ public class TelaInstituicao extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9q = new javax.swing.JLabel();
         btnCadastrarDisciplina = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        tfCodigoProfessor = new javax.swing.JTextField();
+        tfNomeProfessor = new javax.swing.JTextField();
+        tfTitulacao = new javax.swing.JTextField();
+        tfEmailProfessor = new javax.swing.JTextField();
+        btnCadastrarProfessor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Professores", jPanel3);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -246,6 +242,75 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Disciplinas", jPanel2);
 
+        jLabel9.setText("Codigo");
+
+        jLabel10.setText("Nome");
+
+        jLabel11.setText("Titulacao");
+
+        jLabel12.setText("Email");
+
+        tfCodigoProfessor.setText("jTextField1");
+
+        tfNomeProfessor.setText("jTextField2");
+
+        tfTitulacao.setText("jTextField3");
+
+        tfEmailProfessor.setText("jTextField4");
+
+        btnCadastrarProfessor.setText("Cadastrar");
+        btnCadastrarProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarProfessorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCadastrarProfessor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(tfEmailProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(tfTitulacao)
+                            .addComponent(tfNomeProfessor)
+                            .addComponent(tfCodigoProfessor))))
+                .addContainerGap(435, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCodigoProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel10)
+                .addGap(11, 11, 11)
+                .addComponent(tfNomeProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addGap(12, 12, 12)
+                .addComponent(tfTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfEmailProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrarProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(220, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Professores", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -298,6 +363,16 @@ public class TelaInstituicao extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCadastrarDisciplinaActionPerformed
 
+    private void btnCadastrarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProfessorActionPerformed
+        // TODO add your handling code here:
+        int codigoProfessor = Integer.parseInt(tfCodigoProfessor.getText());
+        String NomeProfessor = tfNomeProfessor.getText();
+        String titulacao = tfTitulacao.getText();
+        String emailProfessor = tfEmailProfessor.getText();
+        
+        
+    }//GEN-LAST:event_btnCadastrarProfessorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,7 +401,11 @@ public class TelaInstituicao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCadastrarDisciplina;
+    private javax.swing.JButton btnCadastrarProfessor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -334,6 +413,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel9q;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -344,9 +424,13 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JTextField tfCodigo;
     private javax.swing.JTextField tfCodigoCurso;
     private javax.swing.JTextField tfCodigoDisciplina;
+    private javax.swing.JTextField tfCodigoProfessor;
     private javax.swing.JTextField tfCreditos;
+    private javax.swing.JTextField tfEmailProfessor;
     private javax.swing.JTextField tfNomeDisciplina;
     private javax.swing.JTextField tfNomeDoCurso;
+    private javax.swing.JTextField tfNomeProfessor;
+    private javax.swing.JTextField tfTitulacao;
     private javax.swing.JTextField tfValorPorCredito;
     // End of variables declaration//GEN-END:variables
 }

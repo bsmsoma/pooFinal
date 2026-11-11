@@ -14,7 +14,7 @@ classDiagram
     +getEmail() String
     +getCurso() Curso
 
-    %% Abstrato: cada subclasse decide como aplicar (ou nao) desconto sobre o valor bruto.
+    %% Abstrato: cada subclasse define a propria regra de pagamento sobre o valor bruto.
     +calcularValorAPagar(double valorBruto) double*
 
     %% Imprime os dados comuns (codigo, nome, email, curso).
@@ -125,9 +125,17 @@ classDiagram
 
   class Matricula {
     -String situacao
+    -Aluno aluno
+    -Turma turma
     -String data
-    -Double
+    -double nota1
+    -double nota2
+    -int faltas
   }
+
+  %% Matricula (0 ou vários) matricula Aluno (Exatamente 1) 
+  Matricula "0..*" <-- "1" Aluno : matricula
+  Matricula "0..*" <-- "1" Turma : possui
 
   %% Associação -- Turma (0 ou várias) é conduzida por Professor (exatamente 1).
   %% O mesmo professor pode assumir várias turmas.
@@ -141,13 +149,6 @@ classDiagram
   %% Um curso pode ter vários Alunos.
   Aluno "0..*" --> "1" Curso : pertence a
 
-
-
-
-
-
-
-
   %% 11/11/26-03:50
   %% =========================================
   %% GERENCIADOR DE INSTITUICAO
@@ -159,6 +160,7 @@ classDiagram
     -ArrayList~Professor~ professores
     -ArrayList~Aluno~ alunos
     -ArrayList~Turma~ turmas
+    -ArrayList~Matricula~ matriculas
 
     +buscarCurso(int codigo) Curso
     +cadastrarCurso(int codigo, String nome, double valorPorCredito) String
@@ -177,6 +179,11 @@ classDiagram
     +cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) String
 
     +buscarMatricula(Aluno aluno, Turma turma) Matricula
+    +matricular(Aluno aluno, Turma turma, String dataMatricula) String
+    +calcularVagasDisponiveis(Turma turma) int
+    +calcularMensalidade(Aluno aluno) double
+    +retornarListaDeFrequencia(Turma turma) String
+    +retornarMatriculasDoAluno(Aluno aluno) String
   }
 
   %% Associação -- Gerenciador (1) administra Curso (0 ou vários).
@@ -194,3 +201,31 @@ classDiagram
 
   %% Associação -- Gerenciador (1) administra Turma (0 ou várias).
   GerenciadorDeInstituicao "1" --> "0..*" Turma : gerencia
+
+  %% Associação -- Gerenciador (1) administra Matricula (0 ou várias).
+  GerenciadorDeInstituicao "1" --> "0..*" Matricula : gerencia
+  
+  class InstituicaoGerenciavel {
+    <<interface>> 
+
+    +cadastrarCurso(int codigo, String nome, double valorCredito) String 
+    +cadastrarDisciplina(int codigo, String nome, int creditos, int codigoCurso) String 
+    +cadastrarProfessor(int codigo, String nome, String titulacao, String email) String 
+    +cadastrarAlunoRegular(int codigo, String nome, String email, int codigoCurso) String 
+    +cadastrarAlunoBolsista(int codigo, String nome, String email, int codigoCurso, String tipoBolsa, double percentualBolsa) String 
+    +cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) String 
+    +buscarCurso(int codigo) Curso 
+    +buscarDisciplina(int codigo) Disciplina 
+    +buscarProfessor(int codigo) Professor 
+    +buscarAluno(int codigo) Aluno 
+    +buscarTurma(int codigo) Turma 
+    +buscarMatricula(Aluno aluno, Turma turma) Matricula
+    +matricular(Aluno aluno, Turma turma, String dataMatricula) String
+    +calcularVagasDisponiveis(Turma turma) int
+    +calcularMensalidade(Aluno aluno) double 
+    +retornarListaDeFrequencia(Turma turma) String
+    +retornarMatriculasDoAluno(Aluno aluno) String 
+
+  }
+  %% Gerenciador de Instituição implementa InstituicaoGerenciavel
+  GerenciadorDeInstituicao ..|> InstituicaoGerenciavel : implementa
