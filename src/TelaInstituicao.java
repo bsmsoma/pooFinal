@@ -27,6 +27,21 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        btnCadastrarAluno = new javax.swing.JButton();
+        tfCodigoAluno = new javax.swing.JTextField();
+        tfNomeAluno = new javax.swing.JTextField();
+        tfEmailAluno = new javax.swing.JTextField();
+        chkBolsa = new javax.swing.JCheckBox();
+        jLabel17 = new javax.swing.JLabel();
+        comboBoxBolsa = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        tfCodigoCursoAluno = new javax.swing.JTextField();
+        tfPercentualBolsa = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -61,15 +76,113 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel13.setText("Codigo");
+
+        jLabel14.setText("Nome:");
+
+        jLabel15.setText("Email");
+
+        jLabel16.setText("Curso");
+
+        btnCadastrarAluno.setText("Cadastrar Aluno");
+        btnCadastrarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarAlunoActionPerformed(evt);
+            }
+        });
+
+        tfCodigoAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCodigoAlunoActionPerformed(evt);
+            }
+        });
+
+        tfEmailAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEmailAlunoActionPerformed(evt);
+            }
+        });
+
+        chkBolsa.setText("Sim");
+        chkBolsa.setEnabled(false);
+        chkBolsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBolsaActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Aluno Possui Bolsa? ");
+
+        comboBoxBolsa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ProUni", "Fies", "Portador de Diploma", "Atleta" }));
+        comboBoxBolsa.setEnabled(false);
+
+        jLabel18.setText(" Qual ? ");
+
+        tfPercentualBolsa.setEnabled(false);
+
+        jLabel19.setText("Percentual de Desconto");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(comboBoxBolsa, javax.swing.GroupLayout.Alignment.TRAILING, 0, 348, Short.MAX_VALUE)
+                        .addComponent(jLabel13)
+                        .addComponent(jLabel14)
+                        .addComponent(jLabel15)
+                        .addComponent(jLabel16)
+                        .addComponent(tfNomeAluno)
+                        .addComponent(tfEmailAluno)
+                        .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfCodigoAluno)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel17)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(chkBolsa))
+                        .addComponent(jLabel18)
+                        .addComponent(tfCodigoCursoAluno)
+                        .addComponent(tfPercentualBolsa))
+                    .addComponent(jLabel19))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCodigoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(tfNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfEmailAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addGap(12, 12, 12)
+                .addComponent(tfCodigoCursoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(chkBolsa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19)
+                .addGap(5, 5, 5)
+                .addComponent(tfPercentualBolsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBoxBolsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCadastrarAluno)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Alunos", jPanel4);
@@ -78,11 +191,11 @@ public class TelaInstituicao extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+            .addGap(0, 719, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGap(0, 492, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Turmas", jPanel5);
@@ -126,14 +239,14 @@ public class TelaInstituicao extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(36, 36, 36))
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(149, 149, 149))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(53, 53, 53)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(461, Short.MAX_VALUE)))
+                    .addContainerGap(515, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,12 +266,12 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfValorPorCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(109, 109, 109)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(372, Short.MAX_VALUE)))
+                    .addContainerGap(338, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Cursos", jPanel1);
@@ -206,7 +319,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                             .addComponent(tfCreditos, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfNomeDisciplina, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCodigoDisciplina, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                         .addComponent(btnCadastrarDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75))))
         );
@@ -237,7 +350,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Disciplinas", jPanel2);
@@ -287,7 +400,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                             .addComponent(tfTitulacao)
                             .addComponent(tfNomeProfessor)
                             .addComponent(tfCodigoProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
-                .addContainerGap(435, Short.MAX_VALUE))
+                .addContainerGap(489, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,7 +423,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addComponent(tfEmailProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrarProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Professores", jPanel3);
@@ -328,7 +441,8 @@ public class TelaInstituicao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1)
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -386,6 +500,37 @@ public class TelaInstituicao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCodigoProfessorActionPerformed
 
+    private void tfCodigoAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCodigoAlunoActionPerformed
+
+    private void btnCadastrarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarAlunoActionPerformed
+        int codigo = Integer.parseInt(tfCodigoAluno.getText());
+        String nome = tfNomeAluno.getText();
+        String email = tfEmailAluno.getText();
+        int codigoCurso = Integer.parseInt(tfCodigoCursoAluno.getText());
+
+        String mensagem;
+        if (chkBolsa.isSelected()) {
+            String tipoBolsa = (String) comboBoxBolsa.getSelectedItem();
+            double percentualBolsa = Double.parseDouble(tfPercentualBolsa.getText());
+            mensagem = gerenciador.cadastrarAlunoBolsista(codigo, nome, email, codigoCurso, tipoBolsa, percentualBolsa);
+        } else {
+            mensagem = gerenciador.cadastrarAlunoRegular(codigo, nome, email, codigoCurso);
+        }
+
+        JOptionPane.showMessageDialog(null, mensagem);
+    }//GEN-LAST:event_btnCadastrarAlunoActionPerformed
+
+    private void tfEmailAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEmailAlunoActionPerformed
+
+    private void chkBolsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBolsaActionPerformed
+        comboBoxBolsa.setEnabled(chkBolsa.isSelected());
+        tfPercentualBolsa.setEnabled(chkBolsa.isSelected());
+    }//GEN-LAST:event_chkBolsaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -413,12 +558,22 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnCadastrarAluno;
     private javax.swing.JButton btnCadastrarDisciplina;
     private javax.swing.JButton btnCadastrarProfessor;
+    private javax.swing.JCheckBox chkBolsa;
+    private javax.swing.JComboBox<String> comboBoxBolsa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -435,14 +590,19 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField tfCodigo;
+    private javax.swing.JTextField tfCodigoAluno;
     private javax.swing.JTextField tfCodigoCurso;
+    private javax.swing.JTextField tfCodigoCursoAluno;
     private javax.swing.JTextField tfCodigoDisciplina;
     private javax.swing.JTextField tfCodigoProfessor;
     private javax.swing.JTextField tfCreditos;
+    private javax.swing.JTextField tfEmailAluno;
     private javax.swing.JTextField tfEmailProfessor;
+    private javax.swing.JTextField tfNomeAluno;
     private javax.swing.JTextField tfNomeDisciplina;
     private javax.swing.JTextField tfNomeDoCurso;
     private javax.swing.JTextField tfNomeProfessor;
+    private javax.swing.JTextField tfPercentualBolsa;
     private javax.swing.JTextField tfTitulacao;
     private javax.swing.JTextField tfValorPorCredito;
     // End of variables declaration//GEN-END:variables
