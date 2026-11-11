@@ -1,13 +1,13 @@
 
 
 public class AlunoBolsista extends Aluno {
-    private String tipoBolsa;
+    private String tipoDeBolsa;
     private double percentualBolsa;
     
     
-    public AlunoBolsista(int codigo, String nome, String email, Curso curso, String tipoBolsa, double percentualBolsa){
+    public AlunoBolsista(int codigo, String nome, String email, Curso curso, String tipoDeBolsa, double percentualBolsa){
         super(codigo, nome, email, curso);
-        this.tipoBolsa = tipoBolsa;
+        this.tipoDeBolsa = tipoDeBolsa;
         this.percentualBolsa = percentualBolsa;
         
         
@@ -17,8 +17,8 @@ public class AlunoBolsista extends Aluno {
         
     }
 
-    public String getTipoBolsa() {
-        return tipoBolsa;
+    public String getTipoDeBolsa() {
+        return tipoDeBolsa;
     }
 
     public double getPercentualBolsa() {

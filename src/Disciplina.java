@@ -3,13 +3,13 @@ public class Disciplina {
 
     private int codigo;
     private String nome;
-    private int credito;
+    private int qtdCreditos;
     private Curso curso;
 
-    public Disciplina(int codigo, String nome, int credito, Curso curso) {
+    public Disciplina(int codigo, String nome, int qtdCreditos, Curso curso) {
         this.codigo = codigo;
         this.nome = nome;
-        this.credito = credito;
+        this.qtdCreditos = qtdCreditos;
         this.curso = curso;
     }
 
@@ -21,8 +21,8 @@ public class Disciplina {
         return nome;
     }
 
-    public int getCredito() {
-        return credito;
+    public int getQtdCreditos() {
+        return qtdCreditos;
     }
 
     public Curso getCurso() {
@@ -31,7 +31,7 @@ public class Disciplina {
 
     @Override
     public String toString() {
-        return "Disciplina{" + "codigo=" + codigo + ", nome=" + nome + ", credito=" + credito + ", curso=" + curso + '}';
+        return "Disciplina{" + "codigo=" + codigo + ", nome=" + nome + ", qtdCreditos=" + qtdCreditos + ", curso=" + curso + '}';
     }
 
     

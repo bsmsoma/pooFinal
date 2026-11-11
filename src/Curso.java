@@ -4,12 +4,12 @@ public class Curso {
 
     private int codigo;
     private String nome;
-    private double valorCredito;
+    private double valorPorCredito;
 
-    public Curso(int codigo, String nome, double valorCredito) {
+    public Curso(int codigo, String nome, double valorPorCredito) {
         this.codigo = codigo;
         this.nome = nome;
-        this.valorCredito = valorCredito;
+        this.valorPorCredito = valorPorCredito;
     }
     
     
@@ -23,13 +23,13 @@ public class Curso {
         return nome;
     }
 
-    public double getValorCredito(){
-        return valorCredito;
+    public double getValorPorCredito(){
+        return valorPorCredito;
     }
 
     @Override
     public String toString() {
-        return "Curso{" + "codigo=" + codigo + ", nome=" + nome + ", valorCredito=" + valorCredito + '}';
+        return "Curso{" + "codigo=" + codigo + ", nome=" + nome + ", valorPorCredito=" + valorPorCredito + '}';
     }
     
     

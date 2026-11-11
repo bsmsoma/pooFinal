@@ -19,10 +19,10 @@ public class GerenciadorDeInstituicao {
         return null;
     }
 
-    public String cadastrarCurso(int codigo, String nome, double valorCredito) {
+    public String cadastrarCurso(int codigo, String nome, double valorPorCredito) {
         if (buscarCurso(codigo) == null) {
 
-            Curso curso = new Curso(codigo, nome, valorCredito);
+            Curso curso = new Curso(codigo, nome, valorPorCredito);
 
             cursos.add(curso);
 
@@ -43,12 +43,12 @@ public class GerenciadorDeInstituicao {
         return null;
     }
 
-    public String cadastrarDisciplina(int codigo, String nome, int creditos, int codigoCurso) {
+    public String cadastrarDisciplina(int codigo, String nome, int qtdCreditos, int codigoCurso) {
         if (buscarDisciplina(codigo) == null) {
             Curso cursoEncontrado = buscarCurso(codigoCurso);
 
             if (cursoEncontrado != null) {
-                Disciplina disciplina = new Disciplina(codigo, nome, creditos, cursoEncontrado);
+                Disciplina disciplina = new Disciplina(codigo, nome, qtdCreditos, cursoEncontrado);
                 disciplinas.add(disciplina);
 
                 return "Disciplina cadastrada";
@@ -118,13 +118,13 @@ public class GerenciadorDeInstituicao {
     }
 
     //ALUNO BOLSISTA
-    public String cadastrarAlunoBolsista(int codigo, String nome, String email, int Codigocurso, String tipoBolsa, double percentualBolsa) {
+    public String cadastrarAlunoBolsista(int codigo, String nome, String email, int codigoCurso, String tipoDeBolsa, double percentualBolsa) {
         if (buscarAluno(codigo) == null) {
 
-            Curso cursoEncontrado = buscarCurso(Codigocurso);
+            Curso cursoEncontrado = buscarCurso(codigoCurso);
 
             if (cursoEncontrado != null) {
-                AlunoBolsista ab = new AlunoBolsista(codigo, nome, email, cursoEncontrado, tipoBolsa, percentualBolsa);
+                AlunoBolsista ab = new AlunoBolsista(codigo, nome, email, cursoEncontrado, tipoDeBolsa, percentualBolsa);
 
                 alunos.add(ab);
                 return "Aluno Bolsista cadastrado";

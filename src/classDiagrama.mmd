@@ -5,6 +5,7 @@ classDiagram
     -int codigo
     -String nome
     -String email
+    -Curso curso
 
     +Aluno(int codigo, String nome, String email, Curso curso)
 
@@ -22,12 +23,12 @@ classDiagram
 
   class AlunoBolsista{
     -String tipoDeBolsa
-    -Double percentualBolsa
+    -double percentualBolsa
 
-    +AlunoBolsista(int codigo, String nome, String email, Curso curso, String tipoDeBolsa, Double percentualBolsa)
+    +AlunoBolsista(int codigo, String nome, String email, Curso curso, String tipoDeBolsa, double percentualBolsa)
 
     +getTipoDeBolsa() String
-    +getPercentualBolsa() Double
+    +getPercentualBolsa() double
 
     %% @Override - paga o valor bruto reduzido pelo percentual da bolsa.
     +calcularValorAPagar(double valorBruto) double
@@ -70,14 +71,14 @@ classDiagram
   class Curso {
     -int codigo
     -String nome
-    -Double valorPorCredito
+    -double valorPorCredito
 
-    +Curso(int codigo, String nome, Double valorPorCredito)
+    +Curso(int codigo, String nome, double valorPorCredito)
 
     %% Sem setters
     +getCodigo() int
     +getNome() String
-    +getValorPorCredito() Double
+    +getValorPorCredito() double
 
     +toString() String
   }
@@ -86,6 +87,7 @@ classDiagram
     -int codigo
     -String nome
     -int qtdCreditos
+    -Curso curso
 
     +Disciplina(int codigo, String nome, int qtdCreditos, Curso curso)
 
@@ -104,17 +106,19 @@ classDiagram
   Disciplina "0..*" --> "1" Curso : pertence a
 
   class Turma {
-    -String semestreLetivo
     -int codigo
+    -String semestreLetivo
+    -Disciplina disciplina
+    -Professor professor
     -int numeroDeVagas
 
-    +Turma(String semestreLetivo, int codigo, int numeroDeVagas, Disciplina disciplina, Professor professor)
+    +Turma(int codigo, String semestreLetivo, Disciplina disciplina, Professor professor, int numeroDeVagas)
 
-    +getSemestreLetivo() String
     +getCodigo() int
-    +getNumeroDeVagas() int
-    +getProfessor() Professor
+    +getSemestreLetivo() String
     +getDisciplina() Disciplina
+    +getProfessor() Professor
+    +getNumeroDeVagas() int
 
     +toString() String
   }

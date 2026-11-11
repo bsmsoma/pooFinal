@@ -2,25 +2,25 @@
 public class Turma {
 
     private int codigo;
-    private String semestre;
+    private String semestreLetivo;
     private Disciplina disciplina;
     private Professor professor;
-    private int vagas;
+    private int numeroDeVagas;
 
-    public Turma(int codigo, String semestre, Disciplina disciplina, Professor professor, int vagas) {
+    public Turma(int codigo, String semestreLetivo, Disciplina disciplina, Professor professor, int numeroDeVagas) {
         this.codigo = codigo;
-        this.semestre = semestre;
+        this.semestreLetivo = semestreLetivo;
         this.disciplina = disciplina;
         this.professor = professor;
-        this.vagas = vagas;
+        this.numeroDeVagas = numeroDeVagas;
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public String getSemestre() {
-        return semestre;
+    public String getSemestreLetivo() {
+        return semestreLetivo;
     }
 
     public Disciplina getDisciplina() {
@@ -31,8 +31,8 @@ public class Turma {
         return professor;
     }
 
-    public int getVagas() {
-        return vagas;
+    public int getNumeroDeVagas() {
+        return numeroDeVagas;
     }
     
     
