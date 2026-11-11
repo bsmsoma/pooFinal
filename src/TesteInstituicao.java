@@ -14,10 +14,5 @@ public class TesteInstituicao {
     
     
 
-    Aluno alun = new AlunoRegular(10, "pedro", "pedrofdd@gmail", 101);
-    
-    
-    
-    
     
 }
