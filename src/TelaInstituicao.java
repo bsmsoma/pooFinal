@@ -43,6 +43,17 @@ public class TelaInstituicao extends javax.swing.JFrame {
         tfPercentualBolsa = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        tfCodigoTurma = new javax.swing.JTextField();
+        tfSemestreLetivo = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        tfCodigoDisciplinaTurma = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        tfCodigoProfessorTurma = new javax.swing.JTextField();
+        tfNumeroDeVagas = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        btnCadastrarTurma = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfNomeDoCurso = new javax.swing.JTextField();
@@ -104,7 +115,6 @@ public class TelaInstituicao extends javax.swing.JFrame {
         });
 
         chkBolsa.setText("Sim");
-        chkBolsa.setEnabled(false);
         chkBolsa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkBolsaActionPerformed(evt);
@@ -187,15 +197,75 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Alunos", jPanel4);
 
+        jLabel20.setText("Código");
+
+        jLabel21.setText("Semestre Letivo");
+
+        tfCodigoTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCodigoTurmaActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setText("Disciplina");
+
+        jLabel23.setText("Codigo Professor Turma");
+
+        jLabel24.setText("Numero de Vagas");
+
+        btnCadastrarTurma.setText("Cadastrar Turma");
+        btnCadastrarTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarTurmaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24)
+                    .addComponent(tfNumeroDeVagas)
+                    .addComponent(tfCodigoProfessorTurma)
+                    .addComponent(tfCodigoDisciplinaTurma)
+                    .addComponent(tfSemestreLetivo)
+                    .addComponent(tfCodigoTurma)
+                    .addComponent(btnCadastrarTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCodigoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfSemestreLetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCodigoDisciplinaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCodigoProfessorTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfNumeroDeVagas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrarTurma)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Turmas", jPanel5);
@@ -531,6 +601,21 @@ public class TelaInstituicao extends javax.swing.JFrame {
         tfPercentualBolsa.setEnabled(chkBolsa.isSelected());
     }//GEN-LAST:event_chkBolsaActionPerformed
 
+    private void tfCodigoTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoTurmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCodigoTurmaActionPerformed
+
+    private void btnCadastrarTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarTurmaActionPerformed
+        int codigo = Integer.parseInt(tfCodigoTurma.getText());
+        String semestre = tfSemestreLetivo.getText();
+        int codigoDisciplina = Integer.parseInt(tfCodigoDisciplinaTurma.getText());
+        int codigoProfessor = Integer.parseInt(tfCodigoProfessorTurma.getText());
+        int vagas = Integer.parseInt(tfNumeroDeVagas.getText());
+
+        String mensagem = gerenciador.cadastrarTurma(codigo, semestre, codigoDisciplina, codigoProfessor, vagas);
+        JOptionPane.showMessageDialog(null, mensagem);
+    }//GEN-LAST:event_btnCadastrarTurmaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -561,6 +646,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrarAluno;
     private javax.swing.JButton btnCadastrarDisciplina;
     private javax.swing.JButton btnCadastrarProfessor;
+    private javax.swing.JButton btnCadastrarTurma;
     private javax.swing.JCheckBox chkBolsa;
     private javax.swing.JComboBox<String> comboBoxBolsa;
     private javax.swing.JLabel jLabel1;
@@ -575,6 +661,11 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -594,7 +685,10 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JTextField tfCodigoCurso;
     private javax.swing.JTextField tfCodigoCursoAluno;
     private javax.swing.JTextField tfCodigoDisciplina;
+    private javax.swing.JTextField tfCodigoDisciplinaTurma;
     private javax.swing.JTextField tfCodigoProfessor;
+    private javax.swing.JTextField tfCodigoProfessorTurma;
+    private javax.swing.JTextField tfCodigoTurma;
     private javax.swing.JTextField tfCreditos;
     private javax.swing.JTextField tfEmailAluno;
     private javax.swing.JTextField tfEmailProfessor;
@@ -602,7 +696,9 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JTextField tfNomeDisciplina;
     private javax.swing.JTextField tfNomeDoCurso;
     private javax.swing.JTextField tfNomeProfessor;
+    private javax.swing.JTextField tfNumeroDeVagas;
     private javax.swing.JTextField tfPercentualBolsa;
+    private javax.swing.JTextField tfSemestreLetivo;
     private javax.swing.JTextField tfTitulacao;
     private javax.swing.JTextField tfValorPorCredito;
     // End of variables declaration//GEN-END:variables
