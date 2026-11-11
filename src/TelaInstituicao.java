@@ -250,13 +250,17 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
         jLabel12.setText("Email");
 
-        tfCodigoProfessor.setText("jTextField1");
+        tfCodigoProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCodigoProfessorActionPerformed(evt);
+            }
+        });
 
-        tfNomeProfessor.setText("jTextField2");
-
-        tfTitulacao.setText("jTextField3");
-
-        tfEmailProfessor.setText("jTextField4");
+        tfEmailProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEmailProfessorActionPerformed(evt);
+            }
+        });
 
         btnCadastrarProfessor.setText("Cadastrar");
         btnCadastrarProfessor.addActionListener(new java.awt.event.ActionListener() {
@@ -279,10 +283,10 @@ public class TelaInstituicao extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12)
-                            .addComponent(tfEmailProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(tfEmailProfessor)
                             .addComponent(tfTitulacao)
                             .addComponent(tfNomeProfessor)
-                            .addComponent(tfCodigoProfessor))))
+                            .addComponent(tfCodigoProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
                 .addContainerGap(435, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -364,14 +368,23 @@ public class TelaInstituicao extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarDisciplinaActionPerformed
 
     private void btnCadastrarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProfessorActionPerformed
-        // TODO add your handling code here:
+
         int codigoProfessor = Integer.parseInt(tfCodigoProfessor.getText());
-        String NomeProfessor = tfNomeProfessor.getText();
+        String nomeProfessor = tfNomeProfessor.getText();
         String titulacao = tfTitulacao.getText();
         String emailProfessor = tfEmailProfessor.getText();
         
-        
+        String mensagem = gerenciador.cadastrarProfessor(codigoProfessor, nomeProfessor, titulacao, emailProfessor);
+        JOptionPane.showMessageDialog(null, mensagem);
     }//GEN-LAST:event_btnCadastrarProfessorActionPerformed
+
+    private void tfEmailProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailProfessorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEmailProfessorActionPerformed
+
+    private void tfCodigoProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCodigoProfessorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCodigoProfessorActionPerformed
 
     /**
      * @param args the command line arguments
