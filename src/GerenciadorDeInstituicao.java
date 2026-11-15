@@ -8,6 +8,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     private ArrayList<Professor> professores = new ArrayList<>();
     private ArrayList<Aluno> alunos = new ArrayList<>();
     private ArrayList<Turma> turmas = new ArrayList<>();
+    private ArrayList<Matricula> matriculas = new ArrayList<>();
 
 //--------------------BUSCAR E CADASTRAR CURSO ------------------------
     public Curso buscarCurso(int codigo) {
@@ -71,6 +72,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
 
         }
         return null;
+        
 
     }
 
@@ -150,10 +152,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return null;
     }
 
-    @Override
-    public Matricula buscarMatricula(Aluno aluno, Turma turma) {
-        return null;
-    }
+
 
     public String cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) {
 
@@ -182,4 +181,24 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return "Turma já cadastrada !";
 
     }
+    
+    
+    
+    @Override
+    public Matricula buscarMatricula(Aluno aluno, Turma turma) {
+    if (aluno == null || turma == null) {
+        return null;
+    } 
+       for (Matricula m : matriculas) {
+        if (m.getAluno() == aluno && m.getTurma() == turma) {
+            return m;
+        }
+    }
+    return null;
+ 
+    
+        
+    }
+    
+    
 }

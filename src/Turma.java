@@ -34,6 +34,11 @@ public class Turma {
     public int getNumeroDeVagas() {
         return numeroDeVagas;
     }
+
+    @Override
+    public String toString() {
+        return "Turma{" + "codigo=" + codigo + ", semestreLetivo=" + semestreLetivo + ", disciplina=" + disciplina + ", professor=" + professor + ", numeroDeVagas=" + numeroDeVagas + '}';
+    }
     
     
     
