@@ -18,7 +18,7 @@ public interface InstituicaoGerenciavel {
             int codigoProfessor, int vagas);
 
     // Busca: devolver a referencia encontrada ou null. 
-    //-Curso buscarCurso(int codigo);
+    Curso buscarCurso(int codigo);
 
     Disciplina buscarDisciplina(int codigo);
 
@@ -31,15 +31,16 @@ public interface InstituicaoGerenciavel {
     Matricula buscarMatricula(Aluno aluno, Turma turma);
 
     // Matricula: aplicar regras e retornar sucesso ou motivo da recusa. 
-    //-String matricular(Aluno aluno, Turma turma, String dataMatricula);
+    String matricular(Aluno aluno, Turma turma, String dataMatricula);
 
     // Consultas: calcular vagas e mensalidade conforme as regras. 
-    //-int calcularVagasDisponiveis(Turma turma);
+    int calcularVagasDisponiveis(Turma turma);
 
-    //-double calcularMensalidade(Aluno aluno);
+    double calcularMensalidade(Aluno aluno);
 
     // Relatorios: retornar texto, sem acessar a tela. 
-    //-String retornarListaDeFrequencia(Turma turma);
+    String retornarListaDeFrequencia(Turma turma);
 
-    //-String retornarMatriculasDoAluno(Aluno aluno);
+    String retornarMatriculasDoAluno(Aluno aluno);
 }
+    

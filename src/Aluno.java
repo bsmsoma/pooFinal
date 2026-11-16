@@ -28,6 +28,13 @@ public abstract class Aluno {
     public Curso getCurso() {
         return curso;
     }
+
+    @Override
+    public String toString() {
+        return "Aluno{" + "codigo=" + codigo + ", nome=" + nome + ", email=" + email + ", curso=" + curso.getCodigo()+ " - " + curso.getNome() + '}';
+    }
+
+    public abstract double calcularMensalidade(double valorBruto);
     
     
 }

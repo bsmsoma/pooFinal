@@ -14,8 +14,10 @@ classDiagram
     +getEmail() String
     +getCurso() Curso
 
-    %% Abstrato: cada subclasse define a propria regra de pagamento sobre o valor bruto.
-    +calcularValorAPagar(double valorBruto) double*
+    %% Abstrato: cada subclasse define a propria regra de mensalidade sobre o valor bruto.
+    %% O gerenciador calcula o valor bruto (soma dos creditos das matriculas ativas x valorPorCredito do curso)
+    %% e entrega esse numero ao aluno, sem precisar saber o tipo dele.
+    +calcularMensalidade(double valorBruto) double*
 
     %% Imprime os dados comuns (codigo, nome, email, curso).
     +toString() String
@@ -24,14 +26,15 @@ classDiagram
   class AlunoBolsista{
     -String tipoDeBolsa
     -double percentualBolsa
+    %% percentualBolsa guardado como fracao (ex.: 0.5 para 50%)
 
     +AlunoBolsista(int codigo, String nome, String email, Curso curso, String tipoDeBolsa, double percentualBolsa)
 
     +getTipoDeBolsa() String
     +getPercentualBolsa() double
 
-    %% @Override - paga o valor bruto reduzido pelo percentual da bolsa.
-    +calcularValorAPagar(double valorBruto) double
+    %% @Override - paga o valor bruto reduzido pelo percentual da bolsa: valorBruto x (1 - percentualBolsa).
+    +calcularMensalidade(double valorBruto) double
 
     %% @Override - chama super.toString() e acrescenta tipoDeBolsa e percentualBolsa.
     +toString() String
@@ -42,7 +45,7 @@ classDiagram
     +AlunoRegular(int codigo, String nome, String email, Curso curso)
 
     %% @Override - paga o valor bruto cheio, sem desconto.
-    +calcularValorAPagar(double valorBruto) double
+    +calcularMensalidade(double valorBruto) double
 
     %% @Override - chama super.toString() so pra identificar como Regular.
     +toString() String
@@ -120,20 +123,52 @@ classDiagram
     +getProfessor() Professor
     +getNumeroDeVagas() int
 
+    %% semestreLetivo é informativo: aparece nos relatórios, não entra em cálculo.
     +toString() String
   }
 
+  class MatriculaGerenciavel {
+    <<interface>>
+
+    +lancarNotas(double nota1, double nota2) String
+    +registrarFaltas(int quantidade) String
+    +trancar() String
+    +cancelar() String
+    +calcularMedia() double
+    +retornarResultado() String
+  }
+
   class Matricula {
-    -String situacao
     -Aluno aluno
     -Turma turma
     -String data
+    -String situacao
     -double nota1
     -double nota2
     -int faltas
+    -boolean notasLancadas
+
+    +Matricula(Aluno aluno, Turma turma, String data)
+
+    +getAluno() Aluno
+    +getTurma() Turma
+    +getData() String
+    +getSituacao() String
+    +getNota1() double
+    +getNota2() double
+    +getFaltas() int
+    +isNotasLancadas() boolean
+
+    %% Toda matricula começa ATIVA, sem notas e com 0 faltas.
+    %% Notas e faltas só mudam por lancarNotas / registrarFaltas, e só com matricula ATIVA.
+
+    +toString() String
   }
 
-  %% Matricula (0 ou vários) matricula Aluno (Exatamente 1) 
+  %% Matricula implementa a interface MatriculaGerenciavel
+  Matricula ..|> MatriculaGerenciavel : implementa
+
+  %% Matricula (0 ou vários) matricula Aluno (Exatamente 1)
   Matricula "0..*" <-- "1" Aluno : matricula
   Matricula "0..*" <-- "1" Turma : possui
 
@@ -161,6 +196,10 @@ classDiagram
     -ArrayList~Aluno~ alunos
     -ArrayList~Turma~ turmas
     -ArrayList~Matricula~ matriculas
+
+    %% calcularMensalidade: soma os creditos das matriculas ATIVAS do aluno,
+    %% multiplica pelo valorPorCredito do curso do aluno (valor bruto) e chama aluno.calcularMensalidade(bruto).
+    %% Não usa instanceof: quem decide o tipo de cobrança é a própria subclasse.
 
     +buscarCurso(int codigo) Curso
     +cadastrarCurso(int codigo, String nome, double valorPorCredito) String
@@ -204,27 +243,27 @@ classDiagram
 
   %% Associação -- Gerenciador (1) administra Matricula (0 ou várias).
   GerenciadorDeInstituicao "1" --> "0..*" Matricula : gerencia
-  
-  class InstituicaoGerenciavel {
-    <<interface>> 
 
-    +cadastrarCurso(int codigo, String nome, double valorCredito) String 
-    +cadastrarDisciplina(int codigo, String nome, int creditos, int codigoCurso) String 
-    +cadastrarProfessor(int codigo, String nome, String titulacao, String email) String 
-    +cadastrarAlunoRegular(int codigo, String nome, String email, int codigoCurso) String 
-    +cadastrarAlunoBolsista(int codigo, String nome, String email, int codigoCurso, String tipoBolsa, double percentualBolsa) String 
-    +cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) String 
-    +buscarCurso(int codigo) Curso 
-    +buscarDisciplina(int codigo) Disciplina 
-    +buscarProfessor(int codigo) Professor 
-    +buscarAluno(int codigo) Aluno 
-    +buscarTurma(int codigo) Turma 
+  class InstituicaoGerenciavel {
+    <<interface>>
+
+    +cadastrarCurso(int codigo, String nome, double valorCredito) String
+    +cadastrarDisciplina(int codigo, String nome, int creditos, int codigoCurso) String
+    +cadastrarProfessor(int codigo, String nome, String titulacao, String email) String
+    +cadastrarAlunoRegular(int codigo, String nome, String email, int codigoCurso) String
+    +cadastrarAlunoBolsista(int codigo, String nome, String email, int codigoCurso, String tipoBolsa, double percentualBolsa) String
+    +cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) String
+    +buscarCurso(int codigo) Curso
+    +buscarDisciplina(int codigo) Disciplina
+    +buscarProfessor(int codigo) Professor
+    +buscarAluno(int codigo) Aluno
+    +buscarTurma(int codigo) Turma
     +buscarMatricula(Aluno aluno, Turma turma) Matricula
     +matricular(Aluno aluno, Turma turma, String dataMatricula) String
     +calcularVagasDisponiveis(Turma turma) int
-    +calcularMensalidade(Aluno aluno) double 
+    +calcularMensalidade(Aluno aluno) double
     +retornarListaDeFrequencia(Turma turma) String
-    +retornarMatriculasDoAluno(Aluno aluno) String 
+    +retornarMatriculasDoAluno(Aluno aluno) String
 
   }
   %% Gerenciador de Instituição implementa InstituicaoGerenciavel
