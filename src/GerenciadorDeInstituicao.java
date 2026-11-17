@@ -72,7 +72,6 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
 
         }
         return null;
-        
 
     }
 
@@ -152,8 +151,6 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return null;
     }
 
-
-
     public String cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) {
 
         Disciplina disciplina = buscarDisciplina(codigoDisciplina);
@@ -181,38 +178,79 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return "Turma já cadastrada !";
 
     }
-    
-    
-    
+
     @Override
     public Matricula buscarMatricula(Aluno aluno, Turma turma) {
-    if (aluno == null || turma == null) {
-        return null;
-    } 
-       for (Matricula m : matriculas) {
-        if (m.getAluno() == aluno && m.getTurma() == turma) {
-            return m;
+        if (aluno == null || turma == null) {
+            return null;
         }
-    }
-    return null;
- 
-    
-        
+        for (Matricula m : matriculas) {
+            if (m.getAluno() == aluno && m.getTurma() == turma) {
+                return m;
+            }
+        }
+        return null;
+
     }
 
     @Override
     public String matricular(Aluno aluno, Turma turma, String dataMatricula) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        if (aluno == null || turma == null) {
+            return "Aluno ou Turma não informado";
+        }
+        Aluno alunoCadastrado = buscarAluno(aluno.getCodigo());
+        Turma turmaCadastrada = buscarTurma(turma.getCodigo());
+        if (alunoCadastrado == null || turmaCadastrada == null) {
+            return "Aluno ou Turma não cadastrados";
+        }
+
+        Matricula matriculaCadastrada = buscarMatricula(alunoCadastrado, turmaCadastrada);
+
+        if (matriculaCadastrada != null) {
+            return "Matricula já encontrada";
+        }
+
+        int disponibilidadeDeVagas = calcularVagasDisponiveis(turmaCadastrada);
+        if (disponibilidadeDeVagas < 1) {
+            return "Turma sem vagas disponiveis";
+        }
+
+        Matricula novaMatricula = new Matricula(alunoCadastrado, turmaCadastrada, dataMatricula);
+        matriculas.add(novaMatricula);
+
+        return "Nova matricula efetuada com sucesso";
+
     }
 
     @Override
     public int calcularVagasDisponiveis(Turma turma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //turma inexistente: não há vagas, então devolve 0 e nenhuma matrícula é aceita.
+        if (turma == null) {
+            return 0;
+        }
+        int numeroDeVagas = turma.getNumeroDeVagas();
+
+        for (Matricula m : matriculas) {
+            if (m.getTurma() == turma && m.getSituacao().equals("ATIVA")) {
+                numeroDeVagas -= 1;
+            }
+        }
+        return numeroDeVagas;
     }
 
     @Override
     public double calcularMensalidade(Aluno aluno) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (aluno == null) {
+            return 0;
+        }
+        Aluno alunoCadastrado = buscarAluno(aluno.getCodigo());
+        if (alunoCadastrado == null) {
+            return 0; // a professora permitiu não trata excecões. 
+        }
+        int qtdDeCreditos = 0;
+        // PAREI AQUI. Meu commit vaí até aqui. continue daqui se for preciso. 
+        return 0.0; // provisório. 
     }
 
     @Override
@@ -224,8 +262,5 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     public String retornarMatriculasDoAluno(Aluno aluno) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
-    
-    
+
 }
