@@ -26,7 +26,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel4 = new javax.swing.JPanel();
+        alunosTab = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -42,7 +42,10 @@ public class TelaInstituicao extends javax.swing.JFrame {
         tfCodigoCursoAluno = new javax.swing.JTextField();
         tfPercentualBolsa = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        spAluno = new javax.swing.JScrollPane();
+        taAluno = new javax.swing.JTextArea();
+        btnImprimirTodosAlunos = new javax.swing.JButton();
+        turmasTab = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         tfCodigoTurma = new javax.swing.JTextField();
@@ -54,7 +57,10 @@ public class TelaInstituicao extends javax.swing.JFrame {
         tfNumeroDeVagas = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         btnCadastrarTurma = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        spTurma = new javax.swing.JScrollPane();
+        taTurma = new javax.swing.JTextArea();
+        btnImprimirTurmas = new javax.swing.JButton();
+        professoresTab = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -64,19 +70,22 @@ public class TelaInstituicao extends javax.swing.JFrame {
         tfTitulacao = new javax.swing.JTextField();
         tfEmailProfessor = new javax.swing.JTextField();
         btnCadastrarProfessor = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        spProfessor = new javax.swing.JScrollPane();
+        taProfessor = new javax.swing.JTextArea();
+        btnImprimirProfessores = new javax.swing.JButton();
+        cursosTab = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfNomeDoCurso = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        tfCodigo = new javax.swing.JTextField();
+        tfCodigoCursoCadastro = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tfValorPorCredito = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnCadastrar1 = new javax.swing.JButton();
-        spCursos = new javax.swing.JScrollPane();
-        taCursos = new javax.swing.JTextArea();
+        btnCadastrarCurso = new javax.swing.JButton();
+        spCurso = new javax.swing.JScrollPane();
+        taCurso = new javax.swing.JTextArea();
         btnImprimirCursos = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        disciplinasTab = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         tfNomeDisciplina = new javax.swing.JTextField();
         tfCreditos = new javax.swing.JTextField();
@@ -87,9 +96,25 @@ public class TelaInstituicao extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9q = new javax.swing.JLabel();
         btnCadastrarDisciplina = new javax.swing.JButton();
-        spDisciplinas = new javax.swing.JScrollPane();
-        taDisciplinas = new javax.swing.JTextArea();
+        spDisciplina = new javax.swing.JScrollPane();
+        taDisciplina = new javax.swing.JTextArea();
         btnImprimirDisciplinas = new javax.swing.JButton();
+        Matriculas = new javax.swing.JPanel();
+        spMatricula = new javax.swing.JScrollPane();
+        taMatricula = new javax.swing.JTextArea();
+        btnImprimirMatriculas = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        tfCodigoDoAlunoMat = new javax.swing.JTextField();
+        tfCodigoDaTurma = new javax.swing.JTextField();
+        tfData = new javax.swing.JTextField();
+        btnMatricular = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        btnLancarNotas = new javax.swing.JButton();
+        tfNota1 = new javax.swing.JTextField();
+        tfNota2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,38 +161,56 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
         tfPercentualBolsa.setEnabled(false);
 
-        jLabel19.setText("Percentual de Desconto");
+        jLabel19.setText("Percentual de Desconto (%)");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        taAluno.setEditable(false);
+        taAluno.setColumns(20);
+        taAluno.setRows(5);
+        spAluno.setViewportView(taAluno);
+
+        btnImprimirTodosAlunos.setText("Imprimir Todos os Alunos");
+        btnImprimirTodosAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirTodosAlunosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout alunosTabLayout = new javax.swing.GroupLayout(alunosTab);
+        alunosTab.setLayout(alunosTabLayout);
+        alunosTabLayout.setHorizontalGroup(
+            alunosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(alunosTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(comboBoxBolsa, javax.swing.GroupLayout.Alignment.TRAILING, 0, 348, Short.MAX_VALUE)
-                        .addComponent(jLabel13)
-                        .addComponent(jLabel14)
-                        .addComponent(jLabel15)
-                        .addComponent(jLabel16)
-                        .addComponent(tfNomeAluno)
-                        .addComponent(tfEmailAluno)
-                        .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tfCodigoAluno)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel17)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(chkBolsa))
-                        .addComponent(jLabel18)
-                        .addComponent(tfCodigoCursoAluno)
-                        .addComponent(tfPercentualBolsa))
-                    .addComponent(jLabel19))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addGroup(alunosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                    .addGroup(alunosTabLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(alunosTabLayout.createSequentialGroup()
+                        .addGroup(alunosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboBoxBolsa, javax.swing.GroupLayout.Alignment.TRAILING, 0, 348, Short.MAX_VALUE)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(tfNomeAluno)
+                            .addComponent(tfEmailAluno)
+                            .addComponent(btnCadastrarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfCodigoAluno)
+                            .addGroup(alunosTabLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkBolsa))
+                            .addComponent(jLabel18)
+                            .addComponent(tfCodigoCursoAluno)
+                            .addComponent(tfPercentualBolsa))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnImprimirTodosAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        alunosTabLayout.setVerticalGroup(
+            alunosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(alunosTabLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -185,7 +228,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(tfCodigoCursoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(alunosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(chkBolsa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -195,13 +238,20 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBoxBolsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCadastrarAluno)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addGroup(alunosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(alunosTabLayout.createSequentialGroup()
+                        .addComponent(comboBoxBolsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCadastrarAluno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(alunosTabLayout.createSequentialGroup()
+                        .addComponent(btnImprimirTodosAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(268, 268, 268))))
         );
 
-        jTabbedPane1.addTab("Alunos", jPanel4);
+        jTabbedPane1.addTab("Alunos", alunosTab);
 
         jLabel20.setText("Código");
 
@@ -226,29 +276,48 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        taTurma.setEditable(false);
+        taTurma.setColumns(20);
+        taTurma.setRows(5);
+        spTurma.setViewportView(taTurma);
+
+        btnImprimirTurmas.setText("Imprimir Todas as Turmas");
+        btnImprimirTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirTurmasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout turmasTabLayout = new javax.swing.GroupLayout(turmasTab);
+        turmasTab.setLayout(turmasTabLayout);
+        turmasTabLayout.setHorizontalGroup(
+            turmasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(turmasTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel24)
-                    .addComponent(tfNumeroDeVagas)
-                    .addComponent(tfCodigoProfessorTurma)
-                    .addComponent(tfCodigoDisciplinaTurma)
-                    .addComponent(tfSemestreLetivo)
-                    .addComponent(tfCodigoTurma)
-                    .addComponent(btnCadastrarTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addGroup(turmasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(turmasTabLayout.createSequentialGroup()
+                        .addGroup(turmasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24)
+                            .addComponent(tfNumeroDeVagas)
+                            .addComponent(tfCodigoProfessorTurma)
+                            .addComponent(tfCodigoDisciplinaTurma)
+                            .addComponent(tfSemestreLetivo)
+                            .addComponent(tfCodigoTurma)
+                            .addComponent(btnCadastrarTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
+                        .addGap(0, 357, Short.MAX_VALUE))
+                    .addComponent(spTurma, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, turmasTabLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnImprimirTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        turmasTabLayout.setVerticalGroup(
+            turmasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(turmasTabLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -271,10 +340,14 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addComponent(tfNumeroDeVagas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrarTurma)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnImprimirTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
-        jTabbedPane1.addTab("Turmas", jPanel5);
+        jTabbedPane1.addTab("Turmas", turmasTab);
 
         jLabel9.setText("Codigo");
 
@@ -303,29 +376,48 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCadastrarProfessor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(tfEmailProfessor)
-                            .addComponent(tfTitulacao)
-                            .addComponent(tfNomeProfessor)
-                            .addComponent(tfCodigoProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
-                .addContainerGap(489, Short.MAX_VALUE))
+        taProfessor.setEditable(false);
+        taProfessor.setColumns(20);
+        taProfessor.setRows(5);
+        spProfessor.setViewportView(taProfessor);
+
+        btnImprimirProfessores.setText("Imprimir Todos os Professores");
+        btnImprimirProfessores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirProfessoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout professoresTabLayout = new javax.swing.GroupLayout(professoresTab);
+        professoresTab.setLayout(professoresTabLayout);
+        professoresTabLayout.setHorizontalGroup(
+            professoresTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(professoresTabLayout.createSequentialGroup()
+                .addGroup(professoresTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(professoresTabLayout.createSequentialGroup()
+                        .addGroup(professoresTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnCadastrarProfessor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                            .addGroup(professoresTabLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(professoresTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addComponent(tfEmailProfessor)
+                                    .addComponent(tfTitulacao)
+                                    .addComponent(tfNomeProfessor)
+                                    .addComponent(tfCodigoProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
+                        .addGap(0, 483, Short.MAX_VALUE))
+                    .addComponent(spProfessor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, professoresTabLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnImprimirProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        professoresTabLayout.setVerticalGroup(
+            professoresTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(professoresTabLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -344,10 +436,13 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addComponent(tfEmailProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrarProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(btnImprimirProfessores, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Professores", jPanel3);
+        jTabbedPane1.addTab("Professores", professoresTab);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Cadastro de Curso");
@@ -364,18 +459,18 @@ public class TelaInstituicao extends javax.swing.JFrame {
 
         jLabel4.setText("Valor por crédito");
 
-        btnCadastrar1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnCadastrar1.setText("Cadastrar");
-        btnCadastrar1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrarCurso.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnCadastrarCurso.setText("Cadastrar");
+        btnCadastrarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrar1ActionPerformed(evt);
+                btnCadastrarCursoActionPerformed(evt);
             }
         });
 
-        taCursos.setEditable(false);
-        taCursos.setColumns(20);
-        taCursos.setRows(5);
-        spCursos.setViewportView(taCursos);
+        taCurso.setEditable(false);
+        taCurso.setColumns(20);
+        taCurso.setRows(5);
+        spCurso.setViewportView(taCurso);
 
         btnImprimirCursos.setText("Imprimir Todos");
         btnImprimirCursos.addActionListener(new java.awt.event.ActionListener() {
@@ -384,39 +479,39 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout cursosTabLayout = new javax.swing.GroupLayout(cursosTab);
+        cursosTab.setLayout(cursosTabLayout);
+        cursosTabLayout.setHorizontalGroup(
+            cursosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cursosTabLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(cursosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(cursosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(cursosTabLayout.createSequentialGroup()
+                            .addGroup(cursosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tfCodigoCursoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tfNomeDoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tfValorPorCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
-                            .addComponent(btnCadastrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadastrarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnImprimirCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(spCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(spCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        cursosTabLayout.setVerticalGroup(
+            cursosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cursosTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfCodigoCursoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -424,16 +519,16 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(cursosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfValorPorCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastrarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnImprimirCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(spCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Cursos", jPanel1);
+        jTabbedPane1.addTab("Cursos", cursosTab);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setText("Cadastro de Curso");
@@ -454,10 +549,10 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
-        taDisciplinas.setEditable(false);
-        taDisciplinas.setColumns(20);
-        taDisciplinas.setRows(5);
-        spDisciplinas.setViewportView(taDisciplinas);
+        taDisciplina.setEditable(false);
+        taDisciplina.setColumns(20);
+        taDisciplina.setRows(5);
+        spDisciplina.setViewportView(taDisciplina);
 
         btnImprimirDisciplinas.setText("Imprimir Todas Disciplinas");
         btnImprimirDisciplinas.addActionListener(new java.awt.event.ActionListener() {
@@ -466,74 +561,182 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout disciplinasTabLayout = new javax.swing.GroupLayout(disciplinasTab);
+        disciplinasTab.setLayout(disciplinasTabLayout);
+        disciplinasTabLayout.setHorizontalGroup(
+            disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(disciplinasTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spDisciplinas)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(disciplinasTabLayout.createSequentialGroup()
+                        .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spDisciplina)
+                            .addGroup(disciplinasTabLayout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(disciplinasTabLayout.createSequentialGroup()
+                        .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9q, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(tfCodigoCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                             .addComponent(tfCreditos, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfNomeDisciplina, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCodigoDisciplina, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCadastrarDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnImprimirDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        disciplinasTabLayout.setVerticalGroup(
+            disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(disciplinasTabLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(69, 69, 69)
+                .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCodigoDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(disciplinasTabLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfNomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9q))
                         .addGap(36, 36, 36))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(disciplinasTabLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(btnCadastrarDisciplina, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addComponent(btnCadastrarDisciplina, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(btnImprimirDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(spDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Disciplinas", jPanel2);
+        jTabbedPane1.addTab("Disciplinas", disciplinasTab);
+
+        taMatricula.setEditable(false);
+        taMatricula.setColumns(20);
+        taMatricula.setRows(5);
+        spMatricula.setViewportView(taMatricula);
+
+        btnImprimirMatriculas.setText("ImprimirMatriculas");
+        btnImprimirMatriculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirMatriculasActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setText("Código do Aluno");
+
+        jLabel26.setText("Código da Turma");
+
+        jLabel27.setText("Data ");
+
+        tfData.setToolTipText("");
+
+        btnMatricular.setText("Matricular");
+        btnMatricular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMatricularActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setText("G1");
+
+        jLabel29.setText("G2");
+
+        btnLancarNotas.setText("Lançar Notas");
+
+        tfNota2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNota2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MatriculasLayout = new javax.swing.GroupLayout(Matriculas);
+        Matriculas.setLayout(MatriculasLayout);
+        MatriculasLayout.setHorizontalGroup(
+            MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MatriculasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(MatriculasLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfCodigoDoAlunoMat, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCodigoDaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel29)
+                    .addComponent(tfNota1)
+                    .addComponent(tfNota2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(btnLancarNotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+        MatriculasLayout.setVerticalGroup(
+            MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNota1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCodigoDoAlunoMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel26))
+                .addGap(4, 4, 4)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNota2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCodigoDaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MatriculasLayout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addGap(8, 8, 8)
+                        .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLancarNotas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnMatricular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(spMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+
+        jTabbedPane1.addTab("Matriculas", Matriculas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -563,7 +766,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         
         String mensagem = gerenciador.cadastrarDisciplina(codigoDisciplina, nomeDisciplina, qtdCredito, codCurso);
         
-        JOptionPane.showMessageDialog(null, mensagem);
+        taDisciplina.setText(mensagem);
         
         
         
@@ -578,7 +781,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         String emailProfessor = tfEmailProfessor.getText();
         
         String mensagem = gerenciador.cadastrarProfessor(codigoProfessor, nomeProfessor, titulacao, emailProfessor);
-        JOptionPane.showMessageDialog(null, mensagem);
+        taProfessor.setText(mensagem);
     }//GEN-LAST:event_btnCadastrarProfessorActionPerformed
 
     private void tfEmailProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailProfessorActionPerformed
@@ -602,13 +805,13 @@ public class TelaInstituicao extends javax.swing.JFrame {
         String mensagem;
         if (chkBolsa.isSelected()) {
             String tipoBolsa = (String) comboBoxBolsa.getSelectedItem();
-            double percentualBolsa = Double.parseDouble(tfPercentualBolsa.getText());
+            double percentualBolsa = Double.parseDouble(tfPercentualBolsa.getText()) / 100;
             mensagem = gerenciador.cadastrarAlunoBolsista(codigo, nome, email, codigoCurso, tipoBolsa, percentualBolsa);
         } else {
             mensagem = gerenciador.cadastrarAlunoRegular(codigo, nome, email, codigoCurso);
         }
-
-        JOptionPane.showMessageDialog(null, mensagem);
+        taAluno.setText(mensagem);
+        
     }//GEN-LAST:event_btnCadastrarAlunoActionPerformed
 
     private void tfEmailAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailAlunoActionPerformed
@@ -632,24 +835,63 @@ public class TelaInstituicao extends javax.swing.JFrame {
         int vagas = Integer.parseInt(tfNumeroDeVagas.getText());
 
         String mensagem = gerenciador.cadastrarTurma(codigo, semestre, codigoDisciplina, codigoProfessor, vagas);
-        JOptionPane.showMessageDialog(null, mensagem);
+        taTurma.setText(mensagem);
     }//GEN-LAST:event_btnCadastrarTurmaActionPerformed
 
     private void tfValorPorCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfValorPorCreditoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfValorPorCreditoActionPerformed
 
-    private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCadastrar1ActionPerformed
+    private void btnCadastrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCursoActionPerformed
+        int codigoDoCurso = Integer.parseInt(tfCodigoCursoCadastro.getText());
+        String nomeDoCurso = tfNomeDoCurso.getText();
+        int valorPorCredito = Integer.parseInt(tfValorPorCredito.getText());
+        
+        String mensagem = gerenciador.cadastrarCurso(codigoDoCurso, nomeDoCurso, valorPorCredito);
+        
+        taCurso.setText(mensagem);
+        
+    }//GEN-LAST:event_btnCadastrarCursoActionPerformed
 
     private void btnImprimirCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirCursosActionPerformed
-        taCursos.setText(gerenciador.retornarListaDeCursos());
+        taCurso.setText(gerenciador.retornarListaDeCursos());
     }//GEN-LAST:event_btnImprimirCursosActionPerformed
 
     private void btnImprimirDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirDisciplinasActionPerformed
-        taDisciplinas.setText(gerenciador.retornarListaDeDisciplinas());
+        taDisciplina.setText(gerenciador.retornarListaDeDisciplinas());
     }//GEN-LAST:event_btnImprimirDisciplinasActionPerformed
+
+    private void btnImprimirProfessoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirProfessoresActionPerformed
+        taProfessor.setText(gerenciador.retornarListaDeProfessores());
+    }//GEN-LAST:event_btnImprimirProfessoresActionPerformed
+
+    private void btnImprimirTodosAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirTodosAlunosActionPerformed
+        taAluno.setText(gerenciador.retornarListaDeAlunos());
+    }//GEN-LAST:event_btnImprimirTodosAlunosActionPerformed
+
+    private void btnImprimirTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirTurmasActionPerformed
+        taTurma.setText(gerenciador.retornarListaDeTurmas());
+    }//GEN-LAST:event_btnImprimirTurmasActionPerformed
+
+    private void btnImprimirMatriculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirMatriculasActionPerformed
+        taMatricula.setText(gerenciador.retornarListaDeMatriculas());
+    }//GEN-LAST:event_btnImprimirMatriculasActionPerformed
+
+    private void btnMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatricularActionPerformed
+        int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
+        int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
+        String dataMatricula = tfData.getText();
+
+        Aluno alunoAux = gerenciador.buscarAluno(codigoAluno);
+        Turma turmaAux = gerenciador.buscarTurma(codigoTurma);
+        
+        String confirmacao = gerenciador.matricular(alunoAux, turmaAux, dataMatricula);
+        taMatricula.setText(confirmacao);
+    }//GEN-LAST:event_btnMatricularActionPerformed
+
+    private void tfNota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNota2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNota2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -677,15 +919,25 @@ public class TelaInstituicao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar1;
+    private javax.swing.JPanel Matriculas;
+    private javax.swing.JPanel alunosTab;
     private javax.swing.JButton btnCadastrarAluno;
+    private javax.swing.JButton btnCadastrarCurso;
     private javax.swing.JButton btnCadastrarDisciplina;
     private javax.swing.JButton btnCadastrarProfessor;
     private javax.swing.JButton btnCadastrarTurma;
     private javax.swing.JButton btnImprimirCursos;
     private javax.swing.JButton btnImprimirDisciplinas;
+    private javax.swing.JButton btnImprimirMatriculas;
+    private javax.swing.JButton btnImprimirProfessores;
+    private javax.swing.JButton btnImprimirTodosAlunos;
+    private javax.swing.JButton btnImprimirTurmas;
+    private javax.swing.JButton btnLancarNotas;
+    private javax.swing.JButton btnMatricular;
     private javax.swing.JCheckBox chkBolsa;
     private javax.swing.JComboBox<String> comboBoxBolsa;
+    private javax.swing.JPanel cursosTab;
+    private javax.swing.JPanel disciplinasTab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -703,6 +955,11 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -711,36 +968,46 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel9q;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JScrollPane spCursos;
-    private javax.swing.JScrollPane spDisciplinas;
-    private javax.swing.JTextArea taCursos;
-    private javax.swing.JTextArea taDisciplinas;
-    private javax.swing.JTextField tfCodigo;
+    private javax.swing.JPanel professoresTab;
+    private javax.swing.JScrollPane spAluno;
+    private javax.swing.JScrollPane spCurso;
+    private javax.swing.JScrollPane spDisciplina;
+    private javax.swing.JScrollPane spMatricula;
+    private javax.swing.JScrollPane spProfessor;
+    private javax.swing.JScrollPane spTurma;
+    private javax.swing.JTextArea taAluno;
+    private javax.swing.JTextArea taCurso;
+    private javax.swing.JTextArea taDisciplina;
+    private javax.swing.JTextArea taMatricula;
+    private javax.swing.JTextArea taProfessor;
+    private javax.swing.JTextArea taTurma;
     private javax.swing.JTextField tfCodigoAluno;
     private javax.swing.JTextField tfCodigoCurso;
     private javax.swing.JTextField tfCodigoCursoAluno;
+    private javax.swing.JTextField tfCodigoCursoCadastro;
+    private javax.swing.JTextField tfCodigoDaTurma;
     private javax.swing.JTextField tfCodigoDisciplina;
     private javax.swing.JTextField tfCodigoDisciplinaTurma;
+    private javax.swing.JTextField tfCodigoDoAlunoMat;
     private javax.swing.JTextField tfCodigoProfessor;
     private javax.swing.JTextField tfCodigoProfessorTurma;
     private javax.swing.JTextField tfCodigoTurma;
     private javax.swing.JTextField tfCreditos;
+    private javax.swing.JTextField tfData;
     private javax.swing.JTextField tfEmailAluno;
     private javax.swing.JTextField tfEmailProfessor;
     private javax.swing.JTextField tfNomeAluno;
     private javax.swing.JTextField tfNomeDisciplina;
     private javax.swing.JTextField tfNomeDoCurso;
     private javax.swing.JTextField tfNomeProfessor;
+    private javax.swing.JTextField tfNota1;
+    private javax.swing.JTextField tfNota2;
     private javax.swing.JTextField tfNumeroDeVagas;
     private javax.swing.JTextField tfPercentualBolsa;
     private javax.swing.JTextField tfSemestreLetivo;
     private javax.swing.JTextField tfTitulacao;
     private javax.swing.JTextField tfValorPorCredito;
+    private javax.swing.JPanel turmasTab;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,6 +27,22 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         cadastrarDisciplina(3, "Engenharia de Requisitos", 4, 3);
         cadastrarDisciplina(4, "Redes de Computadores I", 4, 5);
         cadastrarDisciplina(5, "Estatistica Aplicada", 4, 6);
+
+        // Carga inicial de professores (codigo, nome, titulacao, email).
+        // Dados ficticios: ajustar se necessario.
+        cadastrarProfessor(1, "Maria Silva", "Doutora", "maria.silva@exemplo.com");
+        cadastrarProfessor(2, "Joao Santos", "Mestre", "joao.santos@exemplo.com");
+        cadastrarProfessor(3, "Ana Oliveira", "Doutora", "ana.oliveira@exemplo.com");
+        cadastrarProfessor(4, "Carlos Souza", "Especialista", "carlos.souza@exemplo.com");
+        cadastrarProfessor(5, "Patricia Lima", "Mestre", "patricia.lima@exemplo.com");
+
+        // Carga inicial de alunos: 3 regulares e 2 bolsistas.
+        // Bolsista: percentual em fracao (0.5 = 50%).
+        cadastrarAlunoRegular(1, "Ana Costa", "ana.costa@exemplo.com", 1);
+        cadastrarAlunoRegular(2, "Bruno Lima", "bruno.lima@exemplo.com", 2);
+        cadastrarAlunoBolsista(3, "Carla Mendes", "carla.mendes@exemplo.com", 3, "ProUni", 0.5);
+        cadastrarAlunoBolsista(4, "Diego Rocha", "diego.rocha@exemplo.com", 4, "Institucional", 0.3);
+        cadastrarAlunoRegular(5, "Eduarda Alves", "eduarda.alves@exemplo.com", 5);
     }
 
 //--------------------BUSCAR E CADASTRAR CURSO ------------------------
@@ -367,7 +383,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     public String retornarListaDeAlunos() {
         String alunoFormatado = "";
         for (Aluno a : alunos) {
-            alunoFormatado += a.toString() + "\n";
+            alunoFormatado += "Código: " + a.getCodigo() + " - Nome: " + a.getNome() + " - Email: " + a.getEmail() + " - Curso: " + a.getCurso().getNome() + "\n";
         }
         return alunoFormatado;
     }
@@ -378,6 +394,19 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
             turmaFormatada += "Código: " + t.getCodigo() + " - Semestre: " + t.getSemestreLetivo() + " - Disciplina: " + t.getDisciplina().getNome() + " - Professor: " + t.getProfessor().getNome() + " - Vagas: " + t.getNumeroDeVagas() + "\n";
         }
         return turmaFormatada;
+    }
+
+
+    public String retornarListaDeMatriculas() {
+        String matriculaFormatada = "";
+        for (Matricula m : matriculas) {
+            matriculaFormatada += "Aluno: " + m.getAluno().getCodigo() + " - " + m.getAluno().getNome()
+                    + " | Turma: " + m.getTurma().getCodigo()
+                    + " | Disciplina: " + m.getTurma().getDisciplina().getNome()
+                    + " | Situacao: " + m.getSituacao()
+                    + " | Resultado: " + m.retornarResultado() + "\n";
+        }
+        return matriculaFormatada;
     }
 
 }
@@ -425,4 +454,5 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     "CANCELADA": "nao conta para vagas nem para mensalidade; nao volta"
   }
 }
+
 */
