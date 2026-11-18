@@ -253,14 +253,70 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return 0.0; // provisório. 
     }
 
+    
+    
     @Override
     public String retornarListaDeFrequencia(Turma turma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (turma == null) {
+            return " Turma não encontrada!";
+        }
+        
+
+        Turma turmaCadastrada = buscarTurma(turma.getCodigo());
+
+        if (turmaCadastrada == null) {
+            return "Turma não cadastrada!";
+        }
+
+        
+        String relatorio = "LISTA DE FREQUÊNCIA \n";
+        
+        relatorio += "Turma: " + turmaCadastrada.getCodigo() + "\n";
+        relatorio += "Disciplina: " + turmaCadastrada.getDisciplina().getNome() + "\n";
+        relatorio += "Professor: " + turmaCadastrada.getProfessor().getNome() + "\n";
+        relatorio += "Semestre: " + turmaCadastrada.getSemestreLetivo() + "\n";
+        relatorio += "\nALUNOS MATRICULADOS:\n";
+
+        for (Matricula m : matriculas) {
+            if (m.getTurma() == turmaCadastrada && m.getSituacao().equals("ATIVA")) {
+                relatorio += m.getAluno().getCodigo() + " - "
+                        + m.getAluno().getNome() + "\n";
+            }
+        }
+
+        return relatorio;
     }
 
+    
+    
+    
     @Override
     public String retornarMatriculasDoAluno(Aluno aluno) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (aluno == null) {
+            return "Aluno não encontrado!";
+        }
+
+        Aluno alunoCadastrado = buscarAluno(aluno.getCodigo());
+
+        if (alunoCadastrado == null) {
+            return "Aluno não cadastrado!";
+        }
+
+        String relatorio = "MATRÍCULAS DO ALUNO \n";
+        relatorio += "Aluno: " + alunoCadastrado.getNome() + "\n\n";
+
+        for (Matricula m : matriculas) {
+            if (m.getAluno() == alunoCadastrado) {
+                relatorio += "Turma: " + m.getTurma().getCodigo()
+                        + " | Disciplina: " + m.getTurma().getDisciplina().getNome()
+                        + " | Situação: " + m.getSituacao()
+                        + " | Resultado: " + m.retornarResultado() + "\n";
+            }
+        }
+
+        return relatorio;
+
     }
 
+    
 }
