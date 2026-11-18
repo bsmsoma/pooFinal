@@ -10,6 +10,25 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     private ArrayList<Turma> turmas = new ArrayList<>();
     private ArrayList<Matricula> matriculas = new ArrayList<>();
 
+    // Carga inicial: cursos de TI cadastrados pelo proprio metodo de cadastro.
+    // Valor por credito e provisorio: ajustar com os dados reais da instituicao.
+    public GerenciadorDeInstituicao() {
+        cadastrarCurso(1, "Analise e Desenvolvimento de Sistemas", 120.0);
+        cadastrarCurso(2, "Ciencia da Computacao", 120.0);
+        cadastrarCurso(3, "Engenharia de Software", 120.0);
+        cadastrarCurso(4, "Sistemas de Informacao", 120.0);
+        cadastrarCurso(5, "Redes de Computadores", 120.0);
+        cadastrarCurso(6, "Ciencia de Dados", 120.0);
+
+        // Carga inicial de disciplinas (codigo, nome, creditos, codigo do curso).
+        // Creditos e nomes sao provisorios: ajustar com a grade real.
+        cadastrarDisciplina(1, "Algoritmos", 4, 1);
+        cadastrarDisciplina(2, "Estruturas de Dados", 4, 2);
+        cadastrarDisciplina(3, "Engenharia de Requisitos", 4, 3);
+        cadastrarDisciplina(4, "Redes de Computadores I", 4, 5);
+        cadastrarDisciplina(5, "Estatistica Aplicada", 4, 6);
+    }
+
 //--------------------BUSCAR E CADASTRAR CURSO ------------------------
     public Curso buscarCurso(int codigo) {
         for (Curso c : cursos) {
@@ -262,14 +281,11 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return alunoCadastrado.calcularMensalidade(valorBruto);
     }
 
-    
-    
     @Override
     public String retornarListaDeFrequencia(Turma turma) {
         if (turma == null) {
             return "Turma não encontrada!";
         }
-        
 
         Turma turmaCadastrada = buscarTurma(turma.getCodigo());
 
@@ -277,9 +293,8 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
             return "Turma não cadastrada!";
         }
 
-        
         String relatorio = "LISTA DE FREQUÊNCIA \n";
-        
+
         relatorio += "Turma: " + turmaCadastrada.getCodigo() + "\n";
         relatorio += "Disciplina: " + turmaCadastrada.getDisciplina().getNome() + "\n";
         relatorio += "Professor: " + turmaCadastrada.getProfessor().getNome() + "\n";
@@ -296,9 +311,6 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return relatorio;
     }
 
-    
-    
-    
     @Override
     public String retornarMatriculasDoAluno(Aluno aluno) {
         if (aluno == null) {
@@ -311,7 +323,8 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
             return "Aluno não cadastrado!";
         }
 
-        String relatorio = "MATRÍCULAS DO ALUNO \n";
+        String relatorio = "MATRÍCULAS DO ALUNO\n";
+
         relatorio += "Aluno: " + alunoCadastrado.getNome() + "\n\n";
 
         for (Matricula m : matriculas) {
@@ -327,5 +340,89 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
 
     }
 
-    
+    public String retornarListaDeCursos() {
+        String cursoFormatado = "";
+        for (Curso c : cursos) {
+            cursoFormatado += "Código: " + c.getCodigo() + " - Nome: " + c.getNome() + " - Valor por Crédito: " + c.getValorPorCredito() + "\n";
+        }
+        return cursoFormatado;
+    }
+
+    public String retornarListaDeDisciplinas() {
+        String disciplinaFormatada = "";
+        for (Disciplina d : disciplinas) {
+            disciplinaFormatada += "Código: " + d.getCodigo() + " - Nome: " + d.getNome() + " - Créditos: " + d.getQtdCreditos() + " - Curso: " + d.getCurso().getNome() + "\n";
+        }
+        return disciplinaFormatada;
+    }
+
+    public String retornarListaDeProfessores() {
+        String professorFormatado = "";
+        for (Professor p : professores) {
+            professorFormatado += "Código: " + p.getCodigo() + " - Nome: " + p.getNome() + " - Titulação: " + p.getTitulacao() + " - Email: " + p.getEmail() + "\n";
+        }
+        return professorFormatado;
+    }
+
+    public String retornarListaDeAlunos() {
+        String alunoFormatado = "";
+        for (Aluno a : alunos) {
+            alunoFormatado += a.toString() + "\n";
+        }
+        return alunoFormatado;
+    }
+
+    public String retornarListaDeTurmas() {
+        String turmaFormatada = "";
+        for (Turma t : turmas) {
+            turmaFormatada += "Código: " + t.getCodigo() + " - Semestre: " + t.getSemestreLetivo() + " - Disciplina: " + t.getDisciplina().getNome() + " - Professor: " + t.getProfessor().getNome() + " - Vagas: " + t.getNumeroDeVagas() + "\n";
+        }
+        return turmaFormatada;
+    }
+
 }
+
+/*
+
+// Abstração do Objeto Matricula em JSON // 
+{
+  "classe": "Matricula",
+  "implementa": "MatriculaGerenciavel",
+  "atributos": {
+    "aluno": {
+      "classe": "Aluno",
+      "codigo": 10,
+      "nome": "Ana",
+      "email": "ana@x.com",
+      "curso": { "codigo": 1, "nome": "ADS", "valorPorCredito": 120.0 }
+    },
+    "turma": {
+      "classe": "Turma",
+      "codigo": 1,
+      "semestreLetivo": "2026-2",
+      "disciplina": { "codigo": 1, "nome": "POO", "qtdCreditos": 4 },
+      "professor": { "codigo": 1, "nome": "Prof", "titulacao": "Doutor", "email": "p@x.com" },
+      "numeroDeVagas": 30
+    },
+    "data": "16/11/2026",
+    "situacao": "ATIVA",
+    "nota1": 0.0,
+    "nota2": 0.0,
+    "faltas": 0,
+    "notasLancadas": false
+  },
+  "comportamentos": {
+    "lancarNotas(nota1, nota2)": "so com ATIVA e notas entre 0 e 10; pode corrigir de novo",
+    "registrarFaltas(quantidade)": "soma as faltas; so com ATIVA",
+    "trancar()": "ATIVA -> TRANCADA",
+    "cancelar()": "ATIVA ou TRANCADA -> CANCELADA (definitivo)",
+    "calcularMedia()": "(nota1 + 2 * nota2) / 3, sem guardar",
+    "retornarResultado()": "SEM NOTAS LANCADAS | REPROVADO POR FALTA (mais de 15) | REPROVADO POR NOTA (media < 6) | APROVADO"
+  },
+  "regrasDeSituacao": {
+    "ATIVA": "conta como vaga ocupada e entra na soma de creditos",
+    "TRANCADA": "nao conta para vagas nem para mensalidade; continua guardada",
+    "CANCELADA": "nao conta para vagas nem para mensalidade; nao volta"
+  }
+}
+*/
