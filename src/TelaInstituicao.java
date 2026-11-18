@@ -2,9 +2,9 @@
 import javax.swing.JOptionPane; // Bruno~ para mostrar visualmente o print
 
 public class TelaInstituicao extends javax.swing.JFrame {
-    
+
     private GerenciadorDeInstituicao gerenciador = new GerenciadorDeInstituicao();
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaInstituicao.class.getName());
 
     /**
@@ -114,6 +114,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         tfNota1 = new javax.swing.JTextField();
         tfNota2 = new javax.swing.JTextField();
         btnTrancar = new javax.swing.JButton();
+        btnBuscarMatricula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -675,6 +676,13 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarMatricula.setText("Buscar Matricula");
+        btnBuscarMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMatriculaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MatriculasLayout = new javax.swing.GroupLayout(Matriculas);
         Matriculas.setLayout(MatriculasLayout);
         MatriculasLayout.setHorizontalGroup(
@@ -705,6 +713,8 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnTrancar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MatriculasLayout.createSequentialGroup()
+                        .addComponent(btnBuscarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -740,8 +750,10 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addComponent(btnTrancar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMatricular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(btnBuscarMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnMatricular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(spMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
@@ -774,21 +786,21 @@ public class TelaInstituicao extends javax.swing.JFrame {
         String nomeDisciplina = tfNomeDisciplina.getText();
         int qtdCredito = Integer.parseInt(tfCreditos.getText());
         int codCurso = Integer.parseInt(tfCodigoCurso.getText());
-        
+
         String mensagem = gerenciador.cadastrarDisciplina(codigoDisciplina, nomeDisciplina, qtdCredito, codCurso);
-        
+
         taDisciplina.setText(mensagem);
-        
+
 
     }//GEN-LAST:event_btnCadastrarDisciplinaActionPerformed
 
     private void btnCadastrarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProfessorActionPerformed
-        
+
         int codigoProfessor = Integer.parseInt(tfCodigoProfessor.getText());
         String nomeProfessor = tfNomeProfessor.getText();
         String titulacao = tfTitulacao.getText();
         String emailProfessor = tfEmailProfessor.getText();
-        
+
         String mensagem = gerenciador.cadastrarProfessor(codigoProfessor, nomeProfessor, titulacao, emailProfessor);
         taProfessor.setText(mensagem);
     }//GEN-LAST:event_btnCadastrarProfessorActionPerformed
@@ -810,7 +822,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         String nome = tfNomeAluno.getText();
         String email = tfEmailAluno.getText();
         int codigoCurso = Integer.parseInt(tfCodigoCursoAluno.getText());
-        
+
         String mensagem;
         if (chkBolsa.isSelected()) {
             String tipoBolsa = (String) comboBoxBolsa.getSelectedItem();
@@ -820,7 +832,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
             mensagem = gerenciador.cadastrarAlunoRegular(codigo, nome, email, codigoCurso);
         }
         taAluno.setText(mensagem);
-        
+
     }//GEN-LAST:event_btnCadastrarAlunoActionPerformed
 
     private void tfEmailAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailAlunoActionPerformed
@@ -842,7 +854,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         int codigoDisciplina = Integer.parseInt(tfCodigoDisciplinaTurma.getText());
         int codigoProfessor = Integer.parseInt(tfCodigoProfessorTurma.getText());
         int vagas = Integer.parseInt(tfNumeroDeVagas.getText());
-        
+
         String mensagem = gerenciador.cadastrarTurma(codigo, semestre, codigoDisciplina, codigoProfessor, vagas);
         taTurma.setText(mensagem);
     }//GEN-LAST:event_btnCadastrarTurmaActionPerformed
@@ -855,11 +867,11 @@ public class TelaInstituicao extends javax.swing.JFrame {
         int codigoDoCurso = Integer.parseInt(tfCodigoCursoCadastro.getText());
         String nomeDoCurso = tfNomeDoCurso.getText();
         int valorPorCredito = Integer.parseInt(tfValorPorCredito.getText());
-        
+
         String mensagem = gerenciador.cadastrarCurso(codigoDoCurso, nomeDoCurso, valorPorCredito);
-        
+
         taCurso.setText(mensagem);
-        
+
     }//GEN-LAST:event_btnCadastrarCursoActionPerformed
 
     private void btnImprimirCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirCursosActionPerformed
@@ -890,10 +902,10 @@ public class TelaInstituicao extends javax.swing.JFrame {
         int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
         int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
         String dataMatricula = tfData.getText();
-        
+
         Aluno alunoAux = gerenciador.buscarAluno(codigoAluno);
         Turma turmaAux = gerenciador.buscarTurma(codigoTurma);
-        
+
         String confirmacao = gerenciador.matricular(alunoAux, turmaAux, dataMatricula);
         taMatricula.setText(confirmacao);
     }//GEN-LAST:event_btnMatricularActionPerformed
@@ -908,11 +920,28 @@ public class TelaInstituicao extends javax.swing.JFrame {
 //        String dataMatricula = tfData.getText();
 
         Aluno alunoAtual = gerenciador.buscarAluno(codigoAluno);
-        Turma turmaAtual = gerenciador.buscarTurma(codigoTurma);    
+        Turma turmaAtual = gerenciador.buscarTurma(codigoTurma);
         Matricula matriculaATrancar = gerenciador.buscarMatricula(alunoAtual, turmaAtual);
-        String mensagem = matriculaATrancar.trancar();
-        taMatricula.setText(mensagem);
+        if (matriculaATrancar == null) {
+            taMatricula.setText("Matricula Não Encontrada");
+        } else {
+            taMatricula.setText(matriculaATrancar.trancar());
+        }
     }//GEN-LAST:event_btnTrancarActionPerformed
+
+    private void btnBuscarMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMatriculaActionPerformed
+        int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
+        int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
+
+        Aluno alunoAtual = gerenciador.buscarAluno(codigoAluno);
+        Turma turmaAtual = gerenciador.buscarTurma(codigoTurma);
+        Matricula matriculaBuscada = gerenciador.buscarMatricula(alunoAtual, turmaAtual);
+        if (matriculaBuscada == null) {
+            taMatricula.setText("Matricula não encontrada");
+        } else {
+            taMatricula.setText(matriculaBuscada.toString());
+        }
+    }//GEN-LAST:event_btnBuscarMatriculaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -942,6 +971,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Matriculas;
     private javax.swing.JPanel alunosTab;
+    private javax.swing.JButton btnBuscarMatricula;
     private javax.swing.JButton btnCadastrarAluno;
     private javax.swing.JButton btnCadastrarCurso;
     private javax.swing.JButton btnCadastrarDisciplina;

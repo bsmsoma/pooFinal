@@ -877,6 +877,8 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="btnTrancar" min="-2" pref="139" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
+                              <Component id="btnBuscarMatricula" min="-2" pref="148" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnMatricular" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnImprimirMatriculas" min="-2" pref="199" max="-2" attributes="0"/>
@@ -922,8 +924,11 @@
                       <Component id="btnTrancar" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnMatricular" max="32767" attributes="0"/>
-                          <Component id="btnImprimirMatriculas" pref="45" max="32767" attributes="0"/>
+                          <Component id="btnBuscarMatricula" pref="45" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnMatricular" max="32767" attributes="0"/>
+                              <Component id="btnImprimirMatriculas" pref="45" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="spMatricula" min="-2" pref="244" max="-2" attributes="0"/>
@@ -1014,6 +1019,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrancarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBuscarMatricula">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar Matricula"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarMatriculaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
