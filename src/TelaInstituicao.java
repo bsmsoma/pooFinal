@@ -1,11 +1,9 @@
+
 import javax.swing.JOptionPane; // Bruno~ para mostrar visualmente o print
-
-
 
 public class TelaInstituicao extends javax.swing.JFrame {
     
-  private GerenciadorDeInstituicao gerenciador = new GerenciadorDeInstituicao();
-    
+    private GerenciadorDeInstituicao gerenciador = new GerenciadorDeInstituicao();
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaInstituicao.class.getName());
 
@@ -115,6 +113,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         btnLancarNotas = new javax.swing.JButton();
         tfNota1 = new javax.swing.JTextField();
         tfNota2 = new javax.swing.JTextField();
+        btnTrancar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -669,6 +668,13 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
+        btnTrancar.setText("Trancar Matricula");
+        btnTrancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrancarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MatriculasLayout = new javax.swing.GroupLayout(Matriculas);
         Matriculas.setLayout(MatriculasLayout);
         MatriculasLayout.setHorizontalGroup(
@@ -696,9 +702,12 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnTrancar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(MatriculasLayout.createSequentialGroup()
+                        .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
         MatriculasLayout.setVerticalGroup(
@@ -727,7 +736,9 @@ public class TelaInstituicao extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnLancarNotas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addComponent(btnTrancar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnMatricular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
@@ -768,13 +779,11 @@ public class TelaInstituicao extends javax.swing.JFrame {
         
         taDisciplina.setText(mensagem);
         
-        
-        
-        
+
     }//GEN-LAST:event_btnCadastrarDisciplinaActionPerformed
 
     private void btnCadastrarProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProfessorActionPerformed
-
+        
         int codigoProfessor = Integer.parseInt(tfCodigoProfessor.getText());
         String nomeProfessor = tfNomeProfessor.getText();
         String titulacao = tfTitulacao.getText();
@@ -801,7 +810,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         String nome = tfNomeAluno.getText();
         String email = tfEmailAluno.getText();
         int codigoCurso = Integer.parseInt(tfCodigoCursoAluno.getText());
-
+        
         String mensagem;
         if (chkBolsa.isSelected()) {
             String tipoBolsa = (String) comboBoxBolsa.getSelectedItem();
@@ -833,7 +842,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         int codigoDisciplina = Integer.parseInt(tfCodigoDisciplinaTurma.getText());
         int codigoProfessor = Integer.parseInt(tfCodigoProfessorTurma.getText());
         int vagas = Integer.parseInt(tfNumeroDeVagas.getText());
-
+        
         String mensagem = gerenciador.cadastrarTurma(codigo, semestre, codigoDisciplina, codigoProfessor, vagas);
         taTurma.setText(mensagem);
     }//GEN-LAST:event_btnCadastrarTurmaActionPerformed
@@ -881,7 +890,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
         int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
         int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
         String dataMatricula = tfData.getText();
-
+        
         Aluno alunoAux = gerenciador.buscarAluno(codigoAluno);
         Turma turmaAux = gerenciador.buscarTurma(codigoTurma);
         
@@ -892,6 +901,18 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private void tfNota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNota2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNota2ActionPerformed
+
+    private void btnTrancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrancarActionPerformed
+        int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
+        int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
+//        String dataMatricula = tfData.getText();
+
+        Aluno alunoAtual = gerenciador.buscarAluno(codigoAluno);
+        Turma turmaAtual = gerenciador.buscarTurma(codigoTurma);    
+        Matricula matriculaATrancar = gerenciador.buscarMatricula(alunoAtual, turmaAtual);
+        String mensagem = matriculaATrancar.trancar();
+        taMatricula.setText(mensagem);
+    }//GEN-LAST:event_btnTrancarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -934,6 +955,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JButton btnImprimirTurmas;
     private javax.swing.JButton btnLancarNotas;
     private javax.swing.JButton btnMatricular;
+    private javax.swing.JButton btnTrancar;
     private javax.swing.JCheckBox chkBolsa;
     private javax.swing.JComboBox<String> comboBoxBolsa;
     private javax.swing.JPanel cursosTab;
