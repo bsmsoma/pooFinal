@@ -50,6 +50,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     }
 
 //--------------------BUSCAR E CADASTRAR CURSO ------------------------
+    @Override
     public Curso buscarCurso(int codigo) {
         for (Curso c : cursos) {
             if (codigo == c.getCodigo()) {
@@ -59,6 +60,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return null;
     }
 
+    @Override
     public String cadastrarCurso(int codigo, String nome, double valorPorCredito) {
         if (buscarCurso(codigo) == null) {
 
@@ -73,6 +75,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     }
 
 //--------------------BUSCAR E CADASTRAR DISCIPLINA ------------------------
+    @Override
     public Disciplina buscarDisciplina(int codigo) {
         for (Disciplina d : disciplinas) {
             if (codigo == d.getCodigo()) {
@@ -83,6 +86,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return null;
     }
 
+    @Override
     public String cadastrarDisciplina(int codigo, String nome, int qtdCreditos, int codigoCurso) {
         if (buscarDisciplina(codigo) == null) {
             Curso cursoEncontrado = buscarCurso(codigoCurso);
@@ -103,6 +107,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     }
 
 //--------------------BUSCAR E CADASTRAR PROFESSOR------------------------
+    @Override
     public Professor buscarProfessor(int codigo) {
         for (Professor p : professores) {
             if (codigo == p.getCodigo()) {
@@ -114,6 +119,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
 
     }
 
+    @Override
     public String cadastrarProfessor(int codigo, String nome, String titulacao, String email) {
         if (buscarProfessor(codigo) == null) {
             Professor p = new Professor(codigo, nome, titulacao, email);
@@ -126,6 +132,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     }
 
 //--------------------BUSCAR E CADASTRAR ALUNO------------------------    
+    @Override
     public Aluno buscarAluno(int codigo) {
         for (Aluno a : alunos) {
             if (codigo == a.getCodigo()) {
@@ -137,6 +144,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return null;
     }
 
+    @Override
     public String cadastrarAlunoRegular(int codigo, String nome, String email, int codigoCurso) {
         if (buscarAluno(codigo) == null) {
 
@@ -158,6 +166,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     }
 
     //ALUNO BOLSISTA
+    @Override
     public String cadastrarAlunoBolsista(int codigo, String nome, String email, int codigoCurso, String tipoDeBolsa, double percentualBolsa) {
         if (buscarAluno(codigo) == null) {
 
@@ -179,6 +188,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
     }
 
     //BUSCA TURMA
+    @Override
     public Turma buscarTurma(int codigo) {
         for (Turma t : turmas) {
             if (codigo == t.getCodigo()) {
@@ -190,6 +200,7 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return null;
     }
 
+    @Override
     public String cadastrarTurma(int codigo, String semestre, int codigoDisciplina, int codigoProfessor, int vagas) {
 
         Disciplina disciplina = buscarDisciplina(codigoDisciplina);

@@ -1,8 +1,12 @@
 
 public class AlunoRegular extends Aluno {
-    
-    public AlunoRegular (int codigo, String nome, String email, Curso curso){
-        super(codigo, nome, email, curso);   
+
+    public AlunoRegular() {
+        super();
+    }
+
+    public AlunoRegular(int codigo, String nome, String email, Curso curso) {
+        super(codigo, nome, email, curso);
     }
 
     @Override
@@ -18,6 +22,4 @@ public class AlunoRegular extends Aluno {
         return "Aluno Regular:" + super.toString().substring("Aluno".length());
     }
 
-    
-     
 }

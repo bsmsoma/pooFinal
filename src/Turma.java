@@ -7,6 +7,10 @@ public class Turma {
     private Professor professor;
     private int numeroDeVagas;
 
+    public Turma() {
+
+    }
+
     public Turma(int codigo, String semestreLetivo, Disciplina disciplina, Professor professor, int numeroDeVagas) {
         this.codigo = codigo;
         this.semestreLetivo = semestreLetivo;
@@ -39,8 +43,5 @@ public class Turma {
     public String toString() {
         return "Turma{" + "codigo=" + codigo + ", semestreLetivo=" + semestreLetivo + ", disciplina=" + disciplina + ", professor=" + professor + ", numeroDeVagas=" + numeroDeVagas + '}';
     }
-    
-    
-    
-}
 
+}

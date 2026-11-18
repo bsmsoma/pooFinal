@@ -6,6 +6,10 @@ public class Disciplina {
     private int qtdCreditos;
     private Curso curso;
 
+    public Disciplina() {
+
+    }
+
     public Disciplina(int codigo, String nome, int qtdCreditos, Curso curso) {
         this.codigo = codigo;
         this.nome = nome;
@@ -34,7 +38,4 @@ public class Disciplina {
         return "Disciplina{" + "codigo=" + codigo + ", nome=" + nome + ", qtdCreditos=" + qtdCreditos + ", curso=" + curso + '}';
     }
 
-    
-    
-    
 }

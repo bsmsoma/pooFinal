@@ -1,12 +1,18 @@
 
 public abstract class Aluno {
+
     private int codigo;
     private String nome;
     private String email;
     private Curso curso;
- 
-    
-    public Aluno (int codigo, String nome, String email, Curso curso) {
+
+    //Construtor padrão. 
+    public Aluno() {
+
+    }
+
+    //Contrutor parametrizado
+    public Aluno(int codigo, String nome, String email, Curso curso) {
         this.codigo = codigo;
         this.nome = nome;
         this.email = email;
@@ -31,10 +37,9 @@ public abstract class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno{" + "codigo=" + codigo + ", nome=" + nome + ", email=" + email + ", curso=" + curso.getCodigo()+ " - " + curso.getNome() + '}';
+        return "Aluno{" + "codigo=" + codigo + ", nome=" + nome + ", email=" + email + ", curso=" + curso.getCodigo() + " - " + curso.getNome() + '}';
     }
 
     public abstract double calcularMensalidade(double valorBruto);
-    
-    
+
 }

@@ -7,6 +7,7 @@ classDiagram
     -String email
     -Curso curso
 
+    +Aluno()
     +Aluno(int codigo, String nome, String email, Curso curso)
 
     +getCodigo() int
@@ -28,6 +29,7 @@ classDiagram
     -double percentualBolsa
     %% percentualBolsa guardado como fracao (ex.: 0.5 para 50%)
 
+    +AlunoBolsista()
     +AlunoBolsista(int codigo, String nome, String email, Curso curso, String tipoDeBolsa, double percentualBolsa)
 
     +getTipoDeBolsa() String
@@ -42,6 +44,7 @@ classDiagram
 
   class AlunoRegular{
     %%AlunoRegular Precisa de Atributos? Eu acho que não.
+    +AlunoRegular()
     +AlunoRegular(int codigo, String nome, String email, Curso curso)
 
     %% @Override - paga o valor bruto cheio, sem desconto.
@@ -61,6 +64,7 @@ classDiagram
     -String titulacao
     -String email
 
+    +Professor()
     +Professor(int codigo, String nome, String titulacao, String email)
 
     +getCodigo() int
@@ -76,6 +80,7 @@ classDiagram
     -String nome
     -double valorPorCredito
 
+    +Curso()
     +Curso(int codigo, String nome, double valorPorCredito)
 
     %% Sem setters
@@ -92,6 +97,7 @@ classDiagram
     -int qtdCreditos
     -Curso curso
 
+    +Disciplina()
     +Disciplina(int codigo, String nome, int qtdCreditos, Curso curso)
 
     +getCodigo() int
@@ -115,6 +121,7 @@ classDiagram
     -Professor professor
     -int numeroDeVagas
 
+    +Turma()
     +Turma(int codigo, String semestreLetivo, Disciplina disciplina, Professor professor, int numeroDeVagas)
 
     +getCodigo() int
@@ -148,6 +155,7 @@ classDiagram
     -int faltas
     -boolean notasLancadas
 
+    +Matricula()
     +Matricula(Aluno aluno, Turma turma, String data)
 
     +getAluno() Aluno
@@ -161,6 +169,14 @@ classDiagram
 
     %% Toda matricula começa ATIVA, sem notas e com 0 faltas.
     %% Notas e faltas só mudam por lancarNotas / registrarFaltas, e só com matricula ATIVA.
+
+    %% @Override - metodos da interface MatriculaGerenciavel.
+    +lancarNotas(double nota1, double nota2) String
+    +registrarFaltas(int quantidade) String
+    +trancar() String
+    +cancelar() String
+    +calcularMedia() double
+    +retornarResultado() String
 
     +toString() String
   }
@@ -201,6 +217,9 @@ classDiagram
     %% multiplica pelo valorPorCredito do curso do aluno (valor bruto) e chama aluno.calcularMensalidade(bruto).
     %% Não usa instanceof: quem decide o tipo de cobrança é a própria subclasse.
 
+    %% Construtor faz a carga inicial (cursos, disciplinas, professores, alunos e a matricula da Ana na turma 1).
+    +GerenciadorDeInstituicao()
+
     +buscarCurso(int codigo) Curso
     +cadastrarCurso(int codigo, String nome, double valorPorCredito) String
 
@@ -223,6 +242,14 @@ classDiagram
     +calcularMensalidade(Aluno aluno) double
     +retornarListaDeFrequencia(Turma turma) String
     +retornarMatriculasDoAluno(Aluno aluno) String
+
+    %% Listagens usadas pelos botoes Imprimir das abas (fora da interface).
+    +retornarListaDeCursos() String
+    +retornarListaDeDisciplinas() String
+    +retornarListaDeProfessores() String
+    +retornarListaDeAlunos() String
+    +retornarListaDeTurmas() String
+    +retornarListaDeMatriculas() String
   }
 
   %% Associação -- Gerenciador (1) administra Curso (0 ou vários).

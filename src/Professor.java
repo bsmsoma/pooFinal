@@ -6,15 +6,17 @@ public class Professor {
     private String titulacao;
     private String email;
 
-    
-    public Professor(int codigo, String nome, String titulacao, String email){
+    public Professor() {
+
+    }
+
+    public Professor(int codigo, String nome, String titulacao, String email) {
         this.codigo = codigo;
         this.nome = nome;
         this.titulacao = titulacao;
         this.email = email;
     }
-    
-    
+
     public int getCodigo() {
         return codigo;
     }
@@ -35,7 +37,5 @@ public class Professor {
     public String toString() {
         return "Professor{" + "codigo=" + codigo + ", nome=" + nome + ", titulacao=" + titulacao + ", email=" + email + '}';
     }
-    
-    
-    
+
 }
