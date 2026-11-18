@@ -116,6 +116,9 @@ public class TelaInstituicao extends javax.swing.JFrame {
         btnTrancar = new javax.swing.JButton();
         btnBuscarMatricula = new javax.swing.JButton();
         btnCancelarMatricula = new javax.swing.JButton();
+        tfFaltas = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        btnRegistrarFaltas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -663,6 +666,11 @@ public class TelaInstituicao extends javax.swing.JFrame {
         jLabel29.setText("G2");
 
         btnLancarNotas.setText("Lançar Notas");
+        btnLancarNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLancarNotasActionPerformed(evt);
+            }
+        });
 
         tfNota2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -691,6 +699,15 @@ public class TelaInstituicao extends javax.swing.JFrame {
             }
         });
 
+        jLabel30.setText("Faltas");
+
+        btnRegistrarFaltas.setText("Lançar Faltas");
+        btnRegistrarFaltas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarFaltasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MatriculasLayout = new javax.swing.GroupLayout(Matriculas);
         Matriculas.setLayout(MatriculasLayout);
         MatriculasLayout.setHorizontalGroup(
@@ -699,37 +716,40 @@ public class TelaInstituicao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(spMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(MatriculasLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
+                .addComponent(btnBuscarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelarMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfCodigoDoAlunoMat, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfCodigoDaTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
                     .addComponent(jLabel26)
+                    .addComponent(tfCodigoDoAlunoMat, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel29)
-                    .addComponent(tfNota1)
-                    .addComponent(tfNota2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                    .addComponent(btnLancarNotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(56, 56, 56))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
                 .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MatriculasLayout.createSequentialGroup()
-                        .addComponent(btnBuscarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelarMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnTrancar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14))
+                    .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
+                            .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel28)
+                                .addComponent(jLabel29)
+                                .addComponent(tfNota1)
+                                .addComponent(tfNota2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                .addComponent(btnLancarNotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(56, 56, 56))
+                        .addComponent(btnTrancar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel30)
+                    .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnRegistrarFaltas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                        .addComponent(tfFaltas, javax.swing.GroupLayout.Alignment.LEADING))))
         );
         MatriculasLayout.setVerticalGroup(
             MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -757,9 +777,15 @@ public class TelaInstituicao extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(tfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnLancarNotas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel30)
+                .addGap(5, 5, 5)
+                .addComponent(tfFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRegistrarFaltas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(btnTrancar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnImprimirMatriculas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelarMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
@@ -968,6 +994,37 @@ public class TelaInstituicao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCancelarMatriculaActionPerformed
 
+    private void btnRegistrarFaltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarFaltasActionPerformed
+        int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
+        int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
+        int numeroDeFaltas = Integer.parseInt(tfFaltas.getText());
+
+        Aluno alunoAtual = gerenciador.buscarAluno(codigoAluno);
+        Turma turmaAtual = gerenciador.buscarTurma(codigoTurma);
+        Matricula matriculaBuscada = gerenciador.buscarMatricula(alunoAtual, turmaAtual);
+        if (matriculaBuscada == null) {
+            taMatricula.setText("Matricula não encontrada");
+        } else {
+            taMatricula.setText(matriculaBuscada.registrarFaltas(numeroDeFaltas));
+        }
+    }//GEN-LAST:event_btnRegistrarFaltasActionPerformed
+
+    private void btnLancarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancarNotasActionPerformed
+        int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
+        int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
+        int nota1 = Integer.parseInt(tfNota1.getText());
+        int nota2 = Integer.parseInt(tfNota2.getText());
+
+        Aluno alunoAtual = gerenciador.buscarAluno(codigoAluno);
+        Turma turmaAtual = gerenciador.buscarTurma(codigoTurma);
+        Matricula matriculaBuscada = gerenciador.buscarMatricula(alunoAtual, turmaAtual);
+        if (matriculaBuscada == null) {
+            taMatricula.setText("Matricula não encontrada");
+        } else {
+            taMatricula.setText(matriculaBuscada.lancarNotas(nota1, nota2));
+        }
+    }//GEN-LAST:event_btnLancarNotasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1011,6 +1068,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JButton btnImprimirTurmas;
     private javax.swing.JButton btnLancarNotas;
     private javax.swing.JButton btnMatricular;
+    private javax.swing.JButton btnRegistrarFaltas;
     private javax.swing.JButton btnTrancar;
     private javax.swing.JCheckBox chkBolsa;
     private javax.swing.JComboBox<String> comboBoxBolsa;
@@ -1039,6 +1097,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1075,6 +1134,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JTextField tfData;
     private javax.swing.JTextField tfEmailAluno;
     private javax.swing.JTextField tfEmailProfessor;
+    private javax.swing.JTextField tfFaltas;
     private javax.swing.JTextField tfNomeAluno;
     private javax.swing.JTextField tfNomeDisciplina;
     private javax.swing.JTextField tfNomeDoCurso;
