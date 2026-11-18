@@ -246,21 +246,64 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         }
         Aluno alunoCadastrado = buscarAluno(aluno.getCodigo());
         if (alunoCadastrado == null) {
-            return 0; // a professora permitiu não trata excecões. 
+            return 0; // a professora permitiu não tratar excecões. 
         }
         int qtdDeCreditos = 0;
-        // PAREI AQUI. Meu commit vaí até aqui. continue daqui se for preciso. 
-        return 0.0; // provisório. 
+
+        for (Matricula m : matriculas) {
+            if (m.getAluno() == alunoCadastrado && m.getSituacao().equals("ATIVA")) {
+                qtdDeCreditos += m.getTurma().getDisciplina().getQtdCreditos();
+
+            }
+        }
+        double valorDoCredito = alunoCadastrado.getCurso().getValorPorCredito();
+        double valorBruto = qtdDeCreditos * valorDoCredito;
+
+        return alunoCadastrado.calcularMensalidade(valorBruto);
     }
 
     @Override
     public String retornarListaDeFrequencia(Turma turma) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (turma == null) {
+            return "Cadastre uma turma";
+        }
+        Turma turmaCadastrada = buscarTurma(turma.getCodigo());
+        if (turmaCadastrada == null) {
+            return "Turma não encontrada";
+        }
+
+        String listaFormatada = "Turma: " + turmaCadastrada.getSemestreLetivo() + " - " + turmaCadastrada.getCodigo() + "\n"
+                                + "Disciplina: " + turmaCadastrada.getDisciplina().getNome() + " - " + turmaCadastrada.getDisciplina().getCodigo() + "\n"
+                                + "Professor: " + turmaCadastrada.getProfessor().getNome() + "\n"
+                                + "Alunos: \n";
+
+        for (Matricula m : matriculas) {
+            if (m.getTurma() == turmaCadastrada && m.getSituacao().equals("ATIVA")) {
+                listaFormatada += m.getAluno().getCodigo() + " - " + m.getAluno().getNome() + "\n";
+            }
+        }
+
+        return listaFormatada;
     }
 
     @Override
     public String retornarMatriculasDoAluno(Aluno aluno) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (aluno == null) {
+            return "Cadastre Aluno";
+        }
+
+        Aluno alunoCadastrado = buscarAluno(aluno.getCodigo());
+        if (alunoCadastrado == null) {
+            return "Aluno não cadastrado";
+        }
+
+        String matriculasDoAlunos = "";
+        for (Matricula m : matriculas) {
+            if (m.getAluno() == alunoCadastrado) {
+                matriculasDoAluno += m.getTurma().getDisciplina();
+            }
+        }
+        return "String";
     }
 
 }
