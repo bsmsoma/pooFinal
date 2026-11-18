@@ -263,7 +263,7 @@ Para facilitar os testes, o sistema já abre com alguns cadastros:
 | Nome | GitHub |
 |---|---|
 | Brunno Mota | [@bsmsoma](https://github.com/bsmsoma) |
-| Charles Bruno | — |
+| Charles Bruno | [@brunocodeflow](https://github.com/brunocodeflow) |
 
 <div align="center">
 
