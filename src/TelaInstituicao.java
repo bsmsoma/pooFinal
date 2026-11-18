@@ -119,6 +119,17 @@ public class TelaInstituicao extends javax.swing.JFrame {
         tfFaltas = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         btnRegistrarFaltas = new javax.swing.JButton();
+        relatorios = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        tfRelCodigoTurma = new javax.swing.JTextField();
+        tfRelCodigoAluno = new javax.swing.JTextField();
+        btnListaFrequencia = new javax.swing.JButton();
+        btnVagas = new javax.swing.JButton();
+        btnMastriculasAluno = new javax.swing.JButton();
+        btnMensalidade = new javax.swing.JButton();
+        spRelatorio = new javax.swing.JScrollPane();
+        taRelatorio = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,7 +197,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
             .addGroup(alunosTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(alunosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                    .addComponent(spAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
                     .addGroup(alunosTabLayout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -312,7 +323,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                             .addComponent(tfSemestreLetivo)
                             .addComponent(tfCodigoTurma)
                             .addComponent(btnCadastrarTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
-                        .addGap(0, 357, Short.MAX_VALUE))
+                        .addGap(0, 468, Short.MAX_VALUE))
                     .addComponent(spTurma, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, turmasTabLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -412,7 +423,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                                     .addComponent(tfTitulacao)
                                     .addComponent(tfNomeProfessor)
                                     .addComponent(tfCodigoProfessor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
-                        .addGap(0, 483, Short.MAX_VALUE))
+                        .addGap(0, 594, Short.MAX_VALUE))
                     .addComponent(spProfessor, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, professoresTabLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -505,7 +516,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnImprimirCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(spCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         cursosTabLayout.setVerticalGroup(
             cursosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,7 +604,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
                             .addComponent(tfCreditos, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfNomeDisciplina, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCodigoDisciplina, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                         .addGroup(disciplinasTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCadastrarDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnImprimirDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -714,7 +725,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
             MatriculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MatriculasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                .addComponent(spMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MatriculasLayout.createSequentialGroup()
                 .addComponent(btnBuscarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -797,6 +808,89 @@ public class TelaInstituicao extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Matriculas", Matriculas);
+
+        jLabel31.setText("Codigo Do Aluno");
+
+        jLabel32.setText("Codigo da Turma");
+
+        btnListaFrequencia.setText("Lista Frequencia");
+        btnListaFrequencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaFrequenciaActionPerformed(evt);
+            }
+        });
+
+        btnVagas.setText("Vagas");
+        btnVagas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVagasActionPerformed(evt);
+            }
+        });
+
+        btnMastriculasAluno.setText("Matriculas Aluno");
+        btnMastriculasAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMastriculasAlunoActionPerformed(evt);
+            }
+        });
+
+        btnMensalidade.setText("Mensalidade");
+        btnMensalidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMensalidadeActionPerformed(evt);
+            }
+        });
+
+        taRelatorio.setColumns(20);
+        taRelatorio.setRows(5);
+        spRelatorio.setViewportView(taRelatorio);
+
+        javax.swing.GroupLayout relatoriosLayout = new javax.swing.GroupLayout(relatorios);
+        relatorios.setLayout(relatoriosLayout);
+        relatoriosLayout.setHorizontalGroup(
+            relatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(relatoriosLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(relatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(relatoriosLayout.createSequentialGroup()
+                        .addComponent(btnListaFrequencia)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnVagas)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnMastriculasAluno)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMensalidade))
+                    .addGroup(relatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel32)
+                        .addComponent(jLabel31)
+                        .addComponent(tfRelCodigoAluno)
+                        .addComponent(tfRelCodigoTurma, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        relatoriosLayout.setVerticalGroup(
+            relatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(relatoriosLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfRelCodigoTurma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfRelCodigoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(relatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnListaFrequencia)
+                    .addComponent(btnVagas)
+                    .addComponent(btnMastriculasAluno)
+                    .addComponent(btnMensalidade))
+                .addGap(18, 18, 18)
+                .addComponent(spRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Relatórios", relatorios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1012,8 +1106,8 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private void btnLancarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancarNotasActionPerformed
         int codigoAluno = Integer.parseInt(tfCodigoDoAlunoMat.getText());
         int codigoTurma = Integer.parseInt(tfCodigoDaTurma.getText());
-        int nota1 = Integer.parseInt(tfNota1.getText());
-        int nota2 = Integer.parseInt(tfNota2.getText());
+        double nota1 = Double.parseDouble(tfNota1.getText());
+        double nota2 = Double.parseDouble(tfNota2.getText());
 
         Aluno alunoAtual = gerenciador.buscarAluno(codigoAluno);
         Turma turmaAtual = gerenciador.buscarTurma(codigoTurma);
@@ -1024,6 +1118,54 @@ public class TelaInstituicao extends javax.swing.JFrame {
             taMatricula.setText(matriculaBuscada.lancarNotas(nota1, nota2));
         }
     }//GEN-LAST:event_btnLancarNotasActionPerformed
+
+    private void btnListaFrequenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaFrequenciaActionPerformed
+        int codigoTurma = Integer.parseInt(tfRelCodigoTurma.getText());
+        Turma turmaBuscada = gerenciador.buscarTurma(codigoTurma);
+        if (turmaBuscada == null) {
+            taRelatorio.setText("Turma não encontrada");
+        }
+        else {
+            taRelatorio.setText(gerenciador.retornarListaDeFrequencia(turmaBuscada));
+        }
+    }//GEN-LAST:event_btnListaFrequenciaActionPerformed
+
+    private void btnVagasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVagasActionPerformed
+        int codigoTurma = Integer.parseInt(tfRelCodigoTurma.getText());
+        Turma turmaBuscada = gerenciador.buscarTurma(codigoTurma);
+         if (turmaBuscada == null) {
+            taRelatorio.setText("Turma não encontrada");
+        }
+        else {
+            String vagas = Integer.toString(gerenciador.calcularVagasDisponiveis(turmaBuscada)); 
+            taRelatorio.setText("Vagas disponíveis: " + vagas);
+        }
+    }//GEN-LAST:event_btnVagasActionPerformed
+
+    private void btnMastriculasAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMastriculasAlunoActionPerformed
+        int codigoDoAluno = Integer.parseInt(tfRelCodigoAluno.getText());
+        Aluno alunoAtual = gerenciador.buscarAluno(codigoDoAluno);
+        
+        if (alunoAtual == null) {
+            taRelatorio.setText("Aluno não encontrado");
+        }
+        else{
+            taRelatorio.setText(gerenciador.retornarMatriculasDoAluno(alunoAtual));
+        }
+    }//GEN-LAST:event_btnMastriculasAlunoActionPerformed
+
+    private void btnMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMensalidadeActionPerformed
+        int codigoDoAluno = Integer.parseInt(tfRelCodigoAluno.getText());
+        Aluno alunoAtual = gerenciador.buscarAluno(codigoDoAluno);
+
+        if (alunoAtual == null) {
+            taRelatorio.setText("Aluno não encontrado");
+        }
+        else {
+            String mensalidade = String.format("%.2f", gerenciador.calcularMensalidade(alunoAtual));
+            taRelatorio.setText("Mensalidade: R$ " + mensalidade);
+        }
+    }//GEN-LAST:event_btnMensalidadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1067,9 +1209,13 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JButton btnImprimirTodosAlunos;
     private javax.swing.JButton btnImprimirTurmas;
     private javax.swing.JButton btnLancarNotas;
+    private javax.swing.JButton btnListaFrequencia;
+    private javax.swing.JButton btnMastriculasAluno;
     private javax.swing.JButton btnMatricular;
+    private javax.swing.JButton btnMensalidade;
     private javax.swing.JButton btnRegistrarFaltas;
     private javax.swing.JButton btnTrancar;
+    private javax.swing.JButton btnVagas;
     private javax.swing.JCheckBox chkBolsa;
     private javax.swing.JComboBox<String> comboBoxBolsa;
     private javax.swing.JPanel cursosTab;
@@ -1098,6 +1244,8 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1107,17 +1255,20 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9q;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel professoresTab;
+    private javax.swing.JPanel relatorios;
     private javax.swing.JScrollPane spAluno;
     private javax.swing.JScrollPane spCurso;
     private javax.swing.JScrollPane spDisciplina;
     private javax.swing.JScrollPane spMatricula;
     private javax.swing.JScrollPane spProfessor;
+    private javax.swing.JScrollPane spRelatorio;
     private javax.swing.JScrollPane spTurma;
     private javax.swing.JTextArea taAluno;
     private javax.swing.JTextArea taCurso;
     private javax.swing.JTextArea taDisciplina;
     private javax.swing.JTextArea taMatricula;
     private javax.swing.JTextArea taProfessor;
+    private javax.swing.JTextArea taRelatorio;
     private javax.swing.JTextArea taTurma;
     private javax.swing.JTextField tfCodigoAluno;
     private javax.swing.JTextField tfCodigoCurso;
@@ -1143,6 +1294,8 @@ public class TelaInstituicao extends javax.swing.JFrame {
     private javax.swing.JTextField tfNota2;
     private javax.swing.JTextField tfNumeroDeVagas;
     private javax.swing.JTextField tfPercentualBolsa;
+    private javax.swing.JTextField tfRelCodigoAluno;
+    private javax.swing.JTextField tfRelCodigoTurma;
     private javax.swing.JTextField tfSemestreLetivo;
     private javax.swing.JTextField tfTitulacao;
     private javax.swing.JTextField tfValorPorCredito;
