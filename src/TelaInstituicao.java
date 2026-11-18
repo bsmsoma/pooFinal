@@ -1162,7 +1162,7 @@ public class TelaInstituicao extends javax.swing.JFrame {
             taRelatorio.setText("Aluno não encontrado");
         }
         else {
-            String mensalidade = String.format("%.2f", gerenciador.calcularMensalidade(alunoAtual));
+            double mensalidade = gerenciador.calcularMensalidade(alunoAtual);
             taRelatorio.setText("Mensalidade: R$ " + mensalidade);
         }
     }//GEN-LAST:event_btnMensalidadeActionPerformed
