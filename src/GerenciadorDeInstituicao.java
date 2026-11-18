@@ -43,6 +43,10 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         cadastrarAlunoBolsista(3, "Carla Mendes", "carla.mendes@exemplo.com", 3, "ProUni", 0.5);
         cadastrarAlunoBolsista(4, "Diego Rocha", "diego.rocha@exemplo.com", 4, "Institucional", 0.3);
         cadastrarAlunoRegular(5, "Eduarda Alves", "eduarda.alves@exemplo.com", 5);
+
+        // Carga inicial: turma 1 (Algoritmos, Maria Silva) com a aluna Ana Costa matriculada.
+        cadastrarTurma(1, "2026-2", 1, 1, 30);
+        matricular(buscarAluno(1), buscarTurma(1), "18/11/2026");
     }
 
 //--------------------BUSCAR E CADASTRAR CURSO ------------------------
