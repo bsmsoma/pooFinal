@@ -262,48 +262,70 @@ public class GerenciadorDeInstituicao implements InstituicaoGerenciavel {
         return alunoCadastrado.calcularMensalidade(valorBruto);
     }
 
+    
+    
     @Override
     public String retornarListaDeFrequencia(Turma turma) {
         if (turma == null) {
-            return "Cadastre uma turma";
+            return "Turma não encontrada!";
         }
+        
+
         Turma turmaCadastrada = buscarTurma(turma.getCodigo());
+
         if (turmaCadastrada == null) {
-            return "Turma não encontrada";
+            return "Turma não cadastrada!";
         }
 
-        String listaFormatada = "Turma: " + turmaCadastrada.getSemestreLetivo() + " - " + turmaCadastrada.getCodigo() + "\n"
-                                + "Disciplina: " + turmaCadastrada.getDisciplina().getNome() + " - " + turmaCadastrada.getDisciplina().getCodigo() + "\n"
-                                + "Professor: " + turmaCadastrada.getProfessor().getNome() + "\n"
-                                + "Alunos: \n";
+        
+        String relatorio = "LISTA DE FREQUÊNCIA \n";
+        
+        relatorio += "Turma: " + turmaCadastrada.getCodigo() + "\n";
+        relatorio += "Disciplina: " + turmaCadastrada.getDisciplina().getNome() + "\n";
+        relatorio += "Professor: " + turmaCadastrada.getProfessor().getNome() + "\n";
+        relatorio += "Semestre: " + turmaCadastrada.getSemestreLetivo() + "\n";
+        relatorio += "\nALUNOS MATRICULADOS:\n";
 
         for (Matricula m : matriculas) {
             if (m.getTurma() == turmaCadastrada && m.getSituacao().equals("ATIVA")) {
-                listaFormatada += m.getAluno().getCodigo() + " - " + m.getAluno().getNome() + "\n";
+                relatorio += m.getAluno().getCodigo() + " - "
+                        + m.getAluno().getNome() + "\n";
             }
         }
 
-        return listaFormatada;
+        return relatorio;
     }
 
+    
+    
+    
     @Override
     public String retornarMatriculasDoAluno(Aluno aluno) {
         if (aluno == null) {
-            return "Cadastre Aluno";
+            return "Aluno não encontrado!";
         }
 
         Aluno alunoCadastrado = buscarAluno(aluno.getCodigo());
+
         if (alunoCadastrado == null) {
-            return "Aluno não cadastrado";
+            return "Aluno não cadastrado!";
         }
 
-        String matriculasDoAlunos = "";
+        String relatorio = "MATRÍCULAS DO ALUNO \n";
+        relatorio += "Aluno: " + alunoCadastrado.getNome() + "\n\n";
+
         for (Matricula m : matriculas) {
             if (m.getAluno() == alunoCadastrado) {
-                matriculasDoAluno += m.getTurma().getDisciplina();
+                relatorio += "Turma: " + m.getTurma().getCodigo()
+                        + " | Disciplina: " + m.getTurma().getDisciplina().getNome()
+                        + " | Situação: " + m.getSituacao()
+                        + " | Resultado: " + m.retornarResultado() + "\n";
             }
         }
-        return "String";
+
+        return relatorio;
+
     }
 
+    
 }
